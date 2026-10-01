@@ -28,6 +28,7 @@
     if (C < 6) return L > 90 ? '흰색' : L > 70 ? '밝은 회색' : L > 40 ? '회색' : L > 22 ? '진회색' : '검정';
     var base = HUES.filter(function (x) { return h < x[0]; })[0][1];
     if (h >= 335 || h < 12) base = L > 60 ? '분홍' : '자주';
+    if (base === '빨강' && L > 70 && C < 45) base = '분홍';   // 연한 빨강은 분홍으로 부르는 게 자연스러움
     if ((base === '주황' || base === '빨강' || base === '노랑') && L < 50 && C < 45) base = '갈색';
     if ((base === '주황' || base === '노랑') && L >= 62 && C < 40) base = base === '주황' ? '살구' : '베이지';
     else if (base === '노랑' && (C < 45 || L < 62)) base = '황토';

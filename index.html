@@ -5,18 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>배색사전</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#F5F6F8">
+<meta name="theme-color" content="#F5F6F8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1A1A" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-:root{--bg:#F5F6F8;--card:#fff;--line:#EDEEF0;--line2:#E3E5E8;--ink:#111827;--ink2:#4B5563;--mut:#6B7280;--pri:#155EEF;--pri-bg:#EEF4FF;--best:#155EEF;--warn-bg:#FFFBEB;--warn-bd:#FDE68A;--warn:#92400E;--r:20px;--r2:12px;--sh:0 1px 3px rgba(0,0,0,.04);--ghost:.16}
-@media (prefers-color-scheme:dark){:root{--bg:#16181D;--card:#1F2228;--line:#2A2E36;--line2:#333844;--ink:#F3F4F6;--ink2:#C7CBD3;--mut:#9AA0AB;--pri:#5B8DEF;--pri-bg:#1E2A44;--best:#7FA6F5;--warn-bg:#2B2414;--warn-bd:#6B5520;--warn:#F5D58A;--ghost:.14}}
+:root{--bg:#F5F6F8;--card:#fff;--line:#EDEEF0;--line2:#E3E5E8;--ink:#111827;--ink2:#4B5563;--mut:#646B78;--pri:#155EEF;--pri-bg:#EEF4FF;--best:#155EEF;--warn-bg:#FFFBEB;--warn-bd:#FDE68A;--warn:#92400E;--r:20px;--r2:12px;--sh:0 1px 3px rgba(0,0,0,.04);--ghost:.16}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#1A1A1A;--card:#242424;--line:#303030;--line2:#3A3A3A;--ink:#F3F4F6;--ink2:#C7CBD3;--mut:#9AA0AB;--pri:#5B8DEF;--pri-bg:#1E2A44;--best:#7FA6F5;--warn-bg:#2B2414;--warn-bd:#6B5520;--warn:#F5D58A;--ghost:.14}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--pri);outline-offset:2px;border-radius:8px}
+button:focus-visible,a:focus-visible,input:focus-visible,[role=button]:focus-visible,label.btn:focus-within{outline:3px solid var(--pri);outline-offset:2px}
 .num{font-variant-numeric:tabular-nums}
 .app{max-width:1180px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom))}
 header.top{position:sticky;top:0;z-index:20;background:var(--bg);display:flex;align-items:center;gap:12px;padding:calc(12px + env(safe-area-inset-top)) 0 12px}
@@ -25,14 +26,14 @@ header.top h1{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:0;flex
 .lens .sw{width:36px;height:22px;border-radius:999px;background:var(--line2);position:relative;transition:background .2s}
 .lens .sw::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .2s}
 .lens[aria-pressed=true] .sw{background:var(--pri)}.lens[aria-pressed=true] .sw::after{transform:translateX(14px)}
-.bar{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0 12px}.bar::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line2);font-size:14px;font-weight:600;color:var(--ink2);display:inline-flex;align-items:center;gap:6px}
+.bar{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px 12px;scroll-padding-inline:16px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}.bar::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;min-height:44px;padding:0 14px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line2);font-size:14px;font-weight:600;color:var(--ink2);display:inline-flex;align-items:center;gap:6px}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--card);box-shadow:none}
 .chip i{width:12px;height:12px;border-radius:50%;display:inline-block}
 .sum{font-size:14px;color:var(--mut);margin:0 0 12px}
 .sum b{color:var(--ink)}
 /* 배색 판 */
-.plates{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.plates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (min-width:640px){.plates{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:860px){.plates{grid-template-columns:repeat(4,1fr)}}
 @media (min-width:1100px){.plates{grid-template-columns:repeat(5,1fr)}}
@@ -40,29 +41,30 @@ header.top h1{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:0;flex
 .bands{display:flex;aspect-ratio:4/3}
 .bands span{flex:1;position:relative}
 .plate .cap{display:flex;align-items:center;gap:6px;padding:10px 12px 12px}
-.plate .no{font-size:15px;font-weight:700;flex:1}
+.plate .no{font-size:16px;font-weight:700}.plate .lbl{font-size:12px;color:var(--mut);margin-left:2px}
 .hero{display:block;width:100%;text-align:left;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh),inset 0 0 0 1px var(--line);margin:0 0 16px}
 .hero .hb{display:flex;height:168px}
 @media (min-width:860px){.hero .hb{height:220px}}
 .hero .hb span{flex:1;display:flex;align-items:flex-end;padding:10px 12px}
-.hero .hb em{font-style:normal;font-size:12px;font-weight:600;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);line-height:1.2}
-.hero .hc{display:flex;align-items:baseline;gap:10px;padding:12px 14px 14px}
-.hero .hc b{font-size:17px;flex:1}.hero .hc span{font-size:15px;font-weight:700;color:var(--mut)}
-.fitdots{display:flex;gap:3px}.fitdots i{width:7px;height:7px;border-radius:50%;background:var(--line2)}.fitdots i.b{background:var(--best)}.fitdots i.g{background:var(--best);opacity:.45}
+.hero .hb em{font-style:normal;font-size:12px;font-weight:600;color:#111827;background:rgba(255,255,255,.88);padding:3px 8px;border-radius:999px;line-height:1.3}
+.hero .hc{padding:12px 14px 14px}
+.hero .hc b{display:block;font-size:16px}.hero .hc b span{color:var(--mut);margin-left:6px}.hero .hc small{display:block;font-size:14px;color:var(--mut);margin-top:2px}
+.fitdots{display:flex;gap:3px}.fitdots i{width:8px;height:8px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--mut)}.fitdots i.b{background:var(--best);box-shadow:none}.fitdots i.g{box-shadow:inset 0 0 0 2px var(--best)}
 .heart{width:16px;height:16px;color:#E5484D}
-.bands span{transition:flex-grow .3s cubic-bezier(.2,.8,.2,1)}.lens-on .bands span{flex-grow:3.5}.lens-on .bands span.ghost{flex-grow:1}
-.cc .sw{transition:transform .3s cubic-bezier(.2,.8,.2,1),border-radius .3s}.lens-on .cc .sw.ghost{transform:scale(.4);border-radius:50%}
+.bands span{transition:flex-grow .3s cubic-bezier(.2,.8,.2,1)}.lens-on .plate:not(:has(.bands span:not(.ghost))) .bands{opacity:.55}.lens-on .bands span{flex-grow:3.5}.lens-on .bands span.ghost{flex-grow:1}
+.cc .sw{transition:transform .3s cubic-bezier(.2,.8,.2,1),border-radius .3s}.lens-on .cc:has(.ghost){order:1}.lens-on .cc .sw.ghost{aspect-ratio:auto;height:28px;border-radius:8px}
 /* 색 사전 */
 .fam{margin:4px 0 20px}.fam h2{font-size:16px;font-weight:700;margin:0 0 10px}
-.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media (min-width:640px){.chips{grid-template-columns:repeat(6,1fr)}}@media (min-width:1000px){.chips{grid-template-columns:repeat(9,1fr)}}
-.cc{display:block;text-align:left}
+.chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (min-width:640px){.chips{grid-template-columns:repeat(6,minmax(0,1fr))}}@media (min-width:1000px){.chips{grid-template-columns:repeat(9,minmax(0,1fr))}}
+.cc{display:block;text-align:left;min-width:0}.fitwrap>*,.stage>.slots{min-width:0}
 .cc .sw{aspect-ratio:1;border-radius:var(--r2);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);position:relative;transition:opacity .25s}
 .cc .sw .st{position:absolute;right:6px;bottom:6px;width:20px;height:20px;border-radius:50%;background:#fff;color:var(--best);display:grid;place-items:center;box-shadow:0 1px 2px rgba(0,0,0,.15)}
 .cc small{display:block;font-size:12px;color:var(--ink2);margin-top:4px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 /* 시트 */
 .scrim{position:fixed;inset:0;background:rgba(17,24,39,.4);z-index:40;animation:fade .2s}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:92dvh;overflow-y:auto;background:var(--card);border-radius:24px 24px 0 0;padding:8px 16px calc(20px + env(safe-area-inset-bottom));animation:rise .26s cubic-bezier(.2,.8,.2,1)}
+.sheet .chips{grid-template-columns:repeat(4,minmax(0,1fr))}@media (min-width:480px){.sheet .chips{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media (min-width:860px){.sheet{left:50%;right:auto;width:560px;transform:translateX(-50%);bottom:24px;border-radius:24px;animation:none}}
 @keyframes rise{from{transform:translateY(24px);opacity:.6}}@keyframes fade{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -79,17 +81,18 @@ header.top h1{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:0;flex
 .grade{flex:0 0 auto;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
 .grade.best{background:var(--pri-bg);color:var(--best)}.grade.good{background:var(--pri-bg);color:var(--ink2)}.grade.ok{background:var(--bg);color:var(--mut)}.grade.avoid{background:var(--warn-bg);color:var(--warn)}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
-.btn{min-height:48px;border-radius:14px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2)}
-.btn.pri{background:var(--pri);color:#fff;box-shadow:none}
+.btn{min-height:48px;border-radius:var(--r2);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2)}
+.btn.pri{background:#155EEF;color:#fff;box-shadow:none}
 .note{font-size:13px;color:var(--mut);margin:10px 0 0}
 .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 @media (min-width:480px){.mini{grid-template-columns:repeat(4,1fr)}}
 .mini .plate .cap{padding:6px 8px 8px}.mini .plate .no{font-size:13px}
 .h3{font-size:15px;font-weight:700;margin:18px 0 0}
 /* 코디 */
-.fitwrap{display:grid;gap:16px}
-@media (min-width:860px){.fitwrap{grid-template-columns:340px 1fr;align-items:start}}
-.stage{background:var(--card);border-radius:var(--r);box-shadow:var(--sh),inset 0 0 0 1px var(--line);padding:12px;display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
+.fitwrap{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:860px){.fitwrap{grid-template-columns:340px minmax(0,1fr);align-items:start}}
+.stage{background:var(--card);border-radius:var(--r);box-shadow:var(--sh),inset 0 0 0 1px var(--line);padding:12px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+@media (max-width:400px){.stage{grid-template-columns:118px minmax(0,1fr)}}
 @media (min-width:860px){.stage{position:sticky;top:76px}}
 .stage>svg{width:100%;height:auto;display:block}
 .stage svg .pt{cursor:pointer;transition:fill .2s}
@@ -97,32 +100,33 @@ header.top h1{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:0;flex
 .slot{display:flex;align-items:center;gap:10px;min-height:44px;padding:4px 8px 4px 4px;border-radius:12px;text-align:left}
 .slot:hover{background:var(--bg)}
 .slot .sw{width:36px;height:36px;border-radius:10px;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-.slot .sw.empty{background:repeating-linear-gradient(135deg,var(--bg) 0 6px,var(--line) 6px 8px)}
+.slot .sw.none{background:repeating-linear-gradient(135deg,var(--bg) 0 6px,var(--line) 6px 8px)}
 .slot .t{flex:1;min-width:0;font-size:14px;line-height:1.25}.slot .t small{display:block;color:var(--mut);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .slot .wn{width:18px;height:18px;color:var(--warn)}
 .stage .foot{grid-column:1/-1;display:flex;gap:8px}
 .stage .foot .btn{flex:1;min-height:44px;font-size:14px}
+@media (min-width:860px){.sugs,.looks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}.sugs>:not(.sug),.looks>:not(.sug){grid-column:1/-1}.sugs .sug,.looks .sug{margin-top:0}}
 .sugs h2{font-size:16px;font-weight:700;margin:0 0 4px}
 .sug{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:var(--r);box-shadow:var(--sh),inset 0 0 0 1px var(--line);padding:10px;margin-top:10px}
 .sug .bands{width:120px;aspect-ratio:auto;height:72px;border-radius:12px;overflow:hidden;flex:0 0 auto}
 .sug .t{flex:1;min-width:0;font-size:14px}.sug .t b{display:block;font-size:15px}.sug .t small{color:var(--mut)}
 .sug .btn{min-height:44px;flex:0 0 auto}
-.warn{display:flex;gap:8px;align-items:flex-start;background:var(--warn-bg);box-shadow:inset 0 0 0 1px var(--warn-bd);color:var(--warn);border-radius:14px;padding:10px 12px;font-size:14px;margin-top:10px}
+.warn{display:flex;gap:8px;align-items:flex-start;background:var(--warn-bg);box-shadow:inset 0 0 0 1px var(--warn-bd);color:var(--warn);border-radius:var(--r2);padding:10px 12px;font-size:14px;margin-top:10px}
 .empty{background:var(--card);border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line);padding:20px;font-size:15px;color:var(--ink2)}
 .empty b{color:var(--ink)}
 /* 사진 */
 .photo{position:relative;border-radius:var(--r);overflow:hidden;background:var(--bg);touch-action:none}
-.photo canvas{display:block;width:100%;height:auto;cursor:crosshair}
+.photo canvas{display:block;width:auto;max-width:100%;max-height:45dvh;height:auto;margin:0 auto;cursor:crosshair}
 .photo .tip{position:absolute;left:8px;top:8px;background:rgba(17,24,39,.7);color:#fff;font-size:13px;padding:4px 10px;border-radius:999px}
 .pick{display:flex;align-items:center;gap:10px;margin-top:10px}
 .pick .sw{width:44px;height:44px;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
 /* 하단 탭 */
 nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom)}
 nav.tabs button{min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;font-weight:600;color:var(--mut)}
-nav.tabs button[aria-current=page]{color:var(--pri)}
+nav.tabs button[aria-current=page]{color:var(--pri)}nav.tabs button:focus-visible{outline-offset:-4px;border-radius:16px}
 nav.tabs svg{width:24px;height:24px}
 @media (min-width:860px){nav.tabs{left:50%;right:auto;bottom:16px;transform:translateX(-50%);width:420px;border-radius:999px;border:0;box-shadow:0 4px 16px rgba(0,0,0,.08),inset 0 0 0 1px var(--line);overflow:hidden}}
-.toast{position:fixed;top:calc(16px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;animation:fade .2s}
+.toast{position:fixed;bottom:calc(76px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;animation:fade .2s}
 .ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
@@ -136,8 +140,9 @@ nav.tabs svg{width:24px;height:24px}
 'use strict';
 // ---------- 상태 ----------
 var C = CB.colors, P = CB.combos, byNo = {}; P.forEach(function (p) { byNo[p.no] = p; });
-var store = { get: function (k, d) { try { var v = localStorage.getItem('cb.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem('cb.' + k, JSON.stringify(v)); } catch (e) {} } };
-var S = { tab: store.get('tab', 'plates'), lens: store.get('lens', true), size: 0, fam: -1, mine: false, sort: 'no', favs: store.get('favs', []), outfit: store.get('outfit', {}), looks: store.get('looks', []) };
+var store = { get: function (k, d) { try { var v = localStorage.getItem('cb.' + k); if (v == null) return d; var r = JSON.parse(v); return r != null && typeof r === typeof d && Array.isArray(r) === Array.isArray(d) ? r : d; } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem('cb.' + k, JSON.stringify(v)); } catch (e) {} } };
+var S = { tab: store.get('tab', 'plates'), lens: store.get('lens', true), size: 0, fam: -1, mineP: store.get('mineP', 0), mineC: store.get('mineC', false), sort: 'no', favs: store.get('favs', []), outfit: store.get('outfit', {}), looks: store.get('looks', []) };
+S.favs = S.favs.filter(function (no) { return byNo[no]; }); S.looks = S.looks.filter(function (l) { return l && l.o && typeof l.o === 'object' && Object.keys(l.o).every(function (k) { return C[l.o[k]]; }); }); Object.keys(S.outfit).forEach(function (k) { if (!C[S.outfit[k]]) delete S.outfit[k]; });
 var FAMS = ['분홍·빨강', '노랑·갈색', '초록', '파랑·청록', '보라', '무채색'];
 var FAM_DOT = ['#e1868d', '#d9b26b', '#7ea777', '#5a82b3', '#9a7fb8', '#9aa0a6'];
 var GRADE = { best: '여름뮤트 베스트', good: '잘 어울려요', ok: '무난해요', avoid: '피하는 게 좋아요' };
@@ -155,9 +160,9 @@ var I = {
 function ic(n, cls) { return '<svg class="ic ' + (cls || '') + '" viewBox="0 0 24 24" aria-hidden="true">' + I[n] + '</svg>'; }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 function good(i) { return C[i].gr === 'best' || C[i].gr === 'good'; }
-function comboFit(p) { var b = 0, g = 0; p.c.forEach(function (i) { if (C[i].gr === 'best') b++; else if (C[i].gr === 'good') g++; }); return { b: b, g: g, all: b + g === p.c.length, near: b + g >= p.c.length - 1, odd: p.c.filter(function (i) { return !good(i); }), score: p.c.reduce(function (s, i) { return s + C[i].s; }, 0) / p.c.length }; }
+function comboFit(p) { var b = 0, g = 0; p.c.forEach(function (i) { if (C[i].gr === 'best') b++; else if (C[i].gr === 'good') g++; }); return { b: b, g: g, all: b + g === p.c.length, near: p.c.length > 2 && b + g >= p.c.length - 1, odd: p.c.filter(function (i) { return !good(i); }), score: p.c.reduce(function (s, i) { return s + C[i].s; }, 0) / p.c.length }; }
 function ghost(i) { return S.lens && !good(i) ? ' ghost' : ''; }
-function toast(t) { var el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); el.textContent = t; document.body.appendChild(el); setTimeout(function () { el.remove(); }, 2400); }
+function toast(t) { document.querySelectorAll('.toast').forEach(function (e) { e.remove(); }); var el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); el.textContent = t; document.body.appendChild(el); setTimeout(function () { el.remove(); }, 2400); }
 function isFav(no) { return S.favs.indexOf(no) >= 0; }
 
 // ---------- 공통 조각 ----------
@@ -165,10 +170,10 @@ function bands(p) { return '<div class="bands">' + p.c.map(function (i) { return
 function plateCard(p) {
   var f = comboFit(p);
   return '<button class="plate" data-act="combo" data-no="' + p.no + '" aria-label="배색 ' + p.no + '번, ' + p.c.length + '색, 여름뮤트에 어울리는 색 ' + (f.b + f.g) + '개">' + bands(p) +
-    '<div class="cap"><span class="no num">' + p.no + '</span>' + (isFav(p.no) ? ic('saved', 'heart') : '') + '<span class="fitdots" aria-hidden="true">' + p.c.map(function (i) { return '<i class="' + (C[i].gr === 'best' ? 'b' : C[i].gr === 'good' ? 'g' : '') + '"></i>'; }).join('') + '</span></div></button>';
+    '<div class="cap"><span class="no num">' + p.no + '</span><span class="fitdots" aria-hidden="true">' + p.c.map(function (i) { return '<i class="' + (C[i].gr === 'best' ? 'b' : C[i].gr === 'good' ? 'g' : '') + '"></i>'; }).join('') + '</span><span class="lbl">' + (f.all ? '모두 어울림' : f.near ? '1색만 주의' : '') + '</span>' + (isFav(p.no) ? ic('saved', 'heart') : '') + '</div></button>';
 }
 function colorChip(c) {
-  return '<button class="cc" data-act="color" data-i="' + c.i + '" aria-label="' + esc(c.n + ', ' + c.ko + ', ' + GRADE[c.gr]) + '"><div class="sw' + ghost(c.i) + '" style="background:' + c.hex + '">' + (c.gr === 'best' ? '<span class="st">' + ic('star') + '</span>' : '') + '</div><small>' + esc(c.n) + '</small></button>';
+  return '<button class="cc" data-act="color" data-i="' + c.i + '" aria-label="' + esc(c.n + ', ' + c.ko + ', ' + GRADE[c.gr]) + '"><div class="sw' + ghost(c.i) + '" style="background:' + c.hex + '">' + (c.gr === 'best' ? '<span class="st">' + ic('star') + '</span>' : '') + '</div><small>' + esc(c.ko) + '<br><span style="color:var(--mut)">' + esc(c.n) + '</span></small></button>';
 }
 function crow(i) {
   var c = C[i];
@@ -183,60 +188,62 @@ function todayPick() {   // 날마다 바뀌는 '오늘의 여름뮤트 배색' 
 function hero() {
   var p = todayPick(); if (!p) return '';
   return '<button class="hero" data-act="combo" data-no="' + p.no + '" aria-label="오늘의 여름뮤트 배색 ' + p.no + '번 자세히"><div class="hb">' + p.c.map(function (i) { return '<span style="background:' + C[i].hex + '"><em>' + esc(C[i].n) + '</em></span>'; }).join('') + '</div>' +
-    '<div class="hc"><b>오늘의 여름뮤트 배색</b><span class="num">No. ' + p.no + '</span></div></button>';
+    '<div class="hc"><b>오늘의 여름뮤트 배색 <span class="num">No. ' + p.no + '</span></b><small>' + p.c.map(function (i) { return esc(C[i].ko); }).join(' · ') + ' — 모두 여름뮤트에 어울려요</small></div></button>';
 }
 function viewPlates() {
-  var list = P.filter(function (p) { return (!S.size || p.c.length === S.size) && (S.fam < 0 || p.c.some(function (i) { return C[i].g === S.fam; })) && (!S.mine || comboFit(p).near); });
+  var list = P.filter(function (p) { return (!S.size || p.c.length === S.size) && (S.fam < 0 || p.c.some(function (i) { return C[i].g === S.fam; })) && (!S.mineP || (S.mineP === 1 ? comboFit(p).all : comboFit(p).near || comboFit(p).all)); });
   if (S.sort === 'fit') list = list.slice().sort(function (a, b) { var fa = comboFit(a), fb = comboFit(b); return (fb.b + fb.g) / b.c.length - (fa.b + fa.g) / a.c.length || fb.score - fa.score; });
-  var h = '<div class="bar" role="group" aria-label="색 개수">' + [[0, '전체'], [2, '2색'], [3, '3색'], [4, '4색']].map(function (x) { return '<button class="chip" data-act="size" data-v="' + x[0] + '" aria-pressed="' + (S.size === x[0]) + '">' + x[1] + '</button>'; }).join('') +
-    '<button class="chip" data-act="mine" aria-pressed="' + S.mine + '">나에게 어울리는 배색만</button><button class="chip" data-act="sort" aria-pressed="' + (S.sort === 'fit') + '">어울리는 순</button></div>' +
+  var nAll = P.filter(function (p) { return comboFit(p).all; }).length, nNear = P.filter(function (p) { var f = comboFit(p); return f.all || f.near; }).length;
+  var h = '<div class="bar" role="group" aria-label="여름뮤트 필터"><button class="chip" data-act="mineP" data-v="1" aria-pressed="' + (S.mineP === 1) + '">전부 여름뮤트 <span class="num">' + nAll + '</span></button><button class="chip" data-act="mineP" data-v="2" aria-pressed="' + (S.mineP === 2) + '">한 색만 빼고 <span class="num">' + nNear + '</span></button><button class="chip" data-act="sort" aria-pressed="' + (S.sort === 'fit') + '">어울리는 순</button></div>' +
+    '<div class="bar" role="group" aria-label="색 개수">' + [[0, '전체'], [2, '2색'], [3, '3색'], [4, '4색']].map(function (x) { return '<button class="chip" data-act="size" data-v="' + x[0] + '" aria-pressed="' + (S.size === x[0]) + '">' + x[1] + '</button>'; }).join('') + '</div>' +
     '<div class="bar" role="group" aria-label="색 계열">' + FAMS.map(function (f, k) { return '<button class="chip" data-act="fam" data-v="' + k + '" aria-pressed="' + (S.fam === k) + '"><i style="background:' + FAM_DOT[k] + '"></i>' + f + '</button>'; }).join('') + '</div>';
-  if (!S.size && S.fam < 0 && !S.mine && S.sort === 'no') h = hero() + h;
-  h += '<p class="sum"><b class="num">' + list.length + '</b>개 배색' + (S.mine ? ' · 여름뮤트 색이 전부거나 한 색만 빼고 전부 (그 한 색은 가방·신발로)' : '') + '</p>';
+  if (!S.size && S.fam < 0 && !S.mineP && S.sort === 'no') h = hero() + h;
+  h += '<p class="sum"><b class="num">' + list.length + '</b>개 배색' + (S.mineP === 1 ? ' · 모든 색이 여름뮤트' : S.mineP === 2 ? ' · 한 색만 빼고 여름뮤트 (그 한 색은 가방·신발로)' : '') + '</p><p class="sum" style="margin-top:-8px">점 = 여름뮤트 베스트 ● · 어울림 ◎ · 그 밖 ○' + (S.lens ? ' · 렌즈를 켜면 안 어울리는 색은 가늘게' : '') + '</p>';
   h += list.length ? '<div class="plates">' + list.map(plateCard).join('') + '</div>' : '<div class="empty"><b>이 조건에 맞는 배색이 없어요.</b> 색 계열이나 개수 필터를 하나 풀어 보세요.</div>';
   return h;
 }
 // ---------- 화면: 색 ----------
 function viewColors() {
   var bestN = C.filter(function (c) { return c.gr === 'best'; }).length;
-  var h = '<p class="sum">책의 159색 · 별표 <b class="num">' + bestN + '</b>개가 여름뮤트 베스트' + (S.lens ? ' · 어울리지 않는 색은 흐리게' : '') + '</p>';
+  var h = '<p class="sum">책의 159색 · 별표 <b class="num">' + bestN + '</b>개가 여름뮤트 베스트' + (S.lens ? ' · 어울리지 않는 색은 뒤에 작게' : '') + '</p>';
   FAMS.forEach(function (f, k) {
-    var cs = C.filter(function (c) { return c.g === k; }); if (S.mine) cs = cs.filter(function (c) { return good(c.i); });
+    var cs = C.filter(function (c) { return c.g === k; }); if (S.mineC) cs = cs.filter(function (c) { return good(c.i); });
     if (!cs.length) return;
     h += '<section class="fam"><h2>' + f + ' <span class="sum num" style="font-weight:500">' + cs.length + '</span></h2><div class="chips">' + cs.map(colorChip).join('') + '</div></section>';
   });
-  return '<div class="bar"><button class="chip" data-act="mine" aria-pressed="' + S.mine + '">어울리는 색만</button></div>' + h;
+  return '<div class="bar"><button class="chip" data-act="mineC" aria-pressed="' + S.mineC + '">어울리는 색만</button></div>' + h;
 }
 // ---------- 화면: 코디 ----------
 function nearestSlotsCombos() {
   var chosen = SLOTS.map(function (s) { return S.outfit[s[0]]; }).filter(function (v) { return v != null; });
   var uniq = chosen.filter(function (v, k) { return chosen.indexOf(v) === k; });
   if (!uniq.length) return { uniq: uniq, list: [] };
-  var list = P.map(function (p) { var m = uniq.filter(function (i) { return p.c.indexOf(i) >= 0; }).length; return { p: p, m: m }; }).filter(function (x) { return x.m > 0; })
+  var de = function (a, b) { var x = C[a].lab, y = C[b].lab; return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]); };   // 사진에서 고른 색과 거의 같은 책 색(ΔE<10)도 같은 색으로 침
+  var list = P.map(function (p) { var m = uniq.filter(function (i) { return p.c.some(function (j) { return j === i || de(i, j) < 10; }); }).length; return { p: p, m: m }; }).filter(function (x) { return x.m > 0; })
     .sort(function (a, b) { return b.m - a.m || comboFit(b.p).score - comboFit(a.p).score; });
   return { uniq: uniq, list: list.slice(0, 24) };
 }
 function figure() {
-  var f = function (k) { var i = S.outfit[k]; return i == null ? 'var(--line2)' : C[i].hex; }, st = 'stroke="rgba(0,0,0,.18)" stroke-width="1"';
+  var f = function (k) { var i = S.outfit[k]; return i == null ? 'none' : C[i].hex; }, st0 = 'stroke="rgba(0,0,0,.18)" stroke-width="1"', dash = 'stroke="var(--mut)" stroke-width="1.2" stroke-dasharray="3 3"', st = function (k) { return S.outfit[k] == null ? dash : st0; };
   return '<svg viewBox="0 0 150 300" role="img" aria-label="코디 미리보기">' +
-    '<circle cx="75" cy="30" r="18" fill="#E9D7CC" ' + st + '/>' +
-    '<path class="pt" data-act="slot" data-k="outer" d="M38 66 L56 54 L94 54 L112 66 L124 150 L108 154 L104 186 L46 186 L42 154 L26 150 Z" fill="' + f('outer') + '" ' + st + '/>' +
-    '<path class="pt" data-act="slot" data-k="top" d="M58 58 L92 58 L98 120 L96 160 L54 160 L52 120 Z" fill="' + f('top') + '" ' + st + '/>' +
-    '<path class="pt" data-act="slot" data-k="scarf" d="M56 50 Q75 64 94 50 L96 60 Q75 76 54 60 Z M84 62 L92 98 L82 100 L76 66 Z" fill="' + f('scarf') + '" ' + st + '/>' +
-    '<path class="pt" data-act="slot" data-k="bottom" d="M52 160 L98 160 L102 262 L82 262 L75 196 L68 262 L48 262 Z" fill="' + f('bottom') + '" ' + st + '/>' +
-    '<path class="pt" data-act="slot" data-k="shoes" d="M44 262 L70 262 L70 276 L40 276 Q40 266 44 262 Z M80 262 L106 262 Q110 266 110 276 L80 276 Z" fill="' + f('shoes') + '" ' + st + '/>' +
-    '<path class="pt" data-act="slot" data-k="bag" d="M112 140 Q118 118 126 140 M106 140 L134 140 L138 178 L102 178 Z" fill="' + f('bag') + '" ' + st + '/></svg>';
+    '<circle cx="75" cy="28" r="17" fill="var(--line)" ' + st0 + '/><rect x="68" y="42" width="14" height="14" rx="4" fill="var(--line)"/>' +
+    '<path class="pt" data-act="slot" data-k="outer" d="M38 70 Q40 58 56 54 L94 54 Q110 58 112 70 L124 150 L108 154 L104 186 L46 186 L42 154 L26 150 Z" fill="' + f('outer') + '" ' + st('outer') + '/>' +
+    '<path class="pt" data-act="slot" data-k="top" d="M58 58 L92 58 L98 120 L96 160 L54 160 L52 120 Z" fill="' + f('top') + '" ' + st('top') + '/>' +
+    '<path class="pt" data-act="slot" data-k="scarf" d="M56 50 Q75 64 94 50 L96 60 Q75 76 54 60 Z M84 62 L92 98 L82 100 L76 66 Z" fill="' + f('scarf') + '" ' + st('scarf') + '/>' +
+    '<path class="pt" data-act="slot" data-k="bottom" d="M52 160 L98 160 L102 262 L82 262 L75 196 L68 262 L48 262 Z" fill="' + f('bottom') + '" ' + st('bottom') + '/>' +
+    '<path class="pt" data-act="slot" data-k="shoes" d="M44 262 L70 262 L70 276 L40 276 Q40 266 44 262 Z M80 262 L106 262 Q110 266 110 276 L80 276 Z" fill="' + f('shoes') + '" ' + st('shoes') + '/>' +
+    '<path d="M112 140 Q119 116 126 140" fill="none" stroke="' + (S.outfit.bag == null ? 'var(--mut)' : C[S.outfit.bag].hex) + '" stroke-width="3" stroke-linecap="round"/><path class="pt" data-act="slot" data-k="bag" d="M106 140 L134 140 L138 178 L102 178 Z" fill="' + f('bag') + '" ' + st('bag') + '/></svg>';
 }
 function viewOutfit() {
   var h = '<div class="fitwrap"><div class="stage">' + figure() + '<div class="slots">' + SLOTS.map(function (s) {
     var i = S.outfit[s[0]], c = i == null ? null : C[i], bad = c && s[2] && !good(i);
-    return '<button class="slot" data-act="slot" data-k="' + s[0] + '"><span class="sw' + (c ? '' : ' empty') + '"' + (c ? ' style="background:' + c.hex + '"' : '') + '></span><span class="t">' + s[1] + '<small>' + (c ? esc(c.n) + ' · ' + esc(c.ko) : '색 고르기') + '</small></span>' + (bad ? ic('alert', 'wn') : '') + '</button>';
+    return '<button class="slot" data-act="slot" data-k="' + s[0] + '"><span class="sw' + (c ? '' : ' none') + '"' + (c ? ' style="background:' + c.hex + '"' : '') + '></span><span class="t">' + s[1] + '<small>' + (c ? esc(c.n) + ' · ' + esc(c.ko) : '색 고르기') + '</small></span>' + (bad ? ic('alert', 'wn') : '') + '</button>';
   }).join('') + '</div><div class="foot"><button class="btn" data-act="saveLook">' + ic('saved') + '코디 저장</button><button class="btn" data-act="clearLook">' + ic('reset') + '비우기</button></div></div>';
   var faceBad = SLOTS.filter(function (s) { return s[2] && S.outfit[s[0]] != null && !good(S.outfit[s[0]]); });
   var R = nearestSlotsCombos();
   h += '<div class="sugs">';
   if (faceBad.length) h += '<div class="warn" role="note">' + ic('alert') + '<div>' + faceBad.map(function (s) { return s[1]; }).join('·') + ' 색은 얼굴 가까이 와서 안색이 칙칙해 보일 수 있어요. 여름뮤트 베스트 색으로 바꾸거나, 이 색은 하의·가방·신발로 내려 보세요.</div></div>';
-  if (!R.uniq.length) h += '<div class="empty"><b>가지고 있는 옷 색부터 하나 골라 보세요.</b> 왼쪽 사람 그림이나 칸을 누르면 팔레트에서 고르거나 옷 사진을 찍어 가장 가까운 책 색을 찾을 수 있어요. 고른 색이 들어간 책 배색을 아래에 보여 드려요.</div>';
+  if (!R.uniq.length) h += '<h2>상의 색부터 골라 보세요</h2><p class="sum">여름뮤트 베스트 색이에요. 누르면 상의에 넣고, 그 색이 들어간 책 배색을 여기에 보여 줘요. 다른 칸은 사람 그림이나 칸을 누르세요.</p><div class="chips">' + C.filter(function (c) { return c.gr === 'best'; }).map(function (c) { return colorChip(c).replace('data-act="color"', 'data-act="quickTop"'); }).join('') + '</div>';
   else {
     h += '<h2>이 색이 들어간 책 배색</h2><p class="sum">고른 색 ' + R.uniq.length + '개 중 많이 들어간 순 · 같으면 여름뮤트에 어울리는 순 · <b>입혀 보기</b>를 누르면 빈 칸을 채워요</p>';
     h += R.list.length ? R.list.map(function (x) { var p = x.p, ff = comboFit(p);
@@ -250,19 +257,20 @@ function viewSaved() {
   var h = '<h2 class="h3" style="margin-top:0">저장한 배색 <span class="sum num">' + S.favs.length + '</span></h2>';
   h += S.favs.length ? '<div class="plates" style="margin-top:10px">' + S.favs.map(function (no) { return plateCard(byNo[no]); }).join('') + '</div>' : '<div class="empty" style="margin-top:10px">배색을 열고 <b>저장</b>을 누르면 여기 모여요.</div>';
   h += '<h2 class="h3">저장한 코디 <span class="sum num">' + S.looks.length + '</span></h2>';
-  h += S.looks.length ? S.looks.map(function (l, k) {
+  h += S.looks.length ? '<div class="looks" style="margin-top:10px">' + S.looks.map(function (l, k) {
     return '<div class="sug"><div class="bands">' + SLOTS.filter(function (s) { return l.o[s[0]] != null; }).map(function (s) { return '<span style="background:' + C[l.o[s[0]]].hex + '" title="' + s[1] + '"></span>'; }).join('') + '</div><div class="t"><b>' + esc(l.name) + '</b><small>' + SLOTS.filter(function (s) { return l.o[s[0]] != null; }).map(function (s) { return s[1]; }).join(' · ') + '</small></div><button class="btn" data-act="loadLook" data-v="' + k + '">불러오기</button><button class="ib" data-act="delLook" data-v="' + k + '" aria-label="삭제">' + ic('trash') + '</button></div>';
-  }).join('') : '<div class="empty" style="margin-top:10px">코디 탭에서 <b>코디 저장</b>을 누르면 여기 모여요.</div>';
+  }).join('') + '</div>' : '<div class="empty" style="margin-top:10px">코디 탭에서 <b>코디 저장</b>을 누르면 여기 모여요.</div>';
   return h;
 }
 
 // ---------- 시트 ----------
 function openSheet(title, body) {
   var el = document.getElementById('sheet');
-  el.innerHTML = '<div class="scrim" data-act="close"></div><div class="sheet" role="dialog" aria-modal="true" aria-label="' + esc(title.replace(/<[^>]+>/g, '')) + '"><div class="sh"><h2>' + title + '</h2><button class="ib" data-act="close" aria-label="닫기">' + ic('x') + '</button></div>' + body + '</div>';
+  if (!S.ret) S.ret = document.activeElement; document.getElementById('app').inert = document.getElementById('tabs').inert = true;
+  el.innerHTML = '<div class="scrim" data-act="close"></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shT"><div class="sh"><h2 id="shT">' + title + '</h2><button class="ib" data-act="close" aria-label="닫기">' + ic('x') + '</button></div>' + body + '</div>';
   document.body.style.overflow = 'hidden'; var b = el.querySelector('.ib'); if (b) b.focus();
 }
-function closeSheet() { document.getElementById('sheet').innerHTML = ''; document.body.style.overflow = ''; S.pickFor = null; }
+function closeSheet() { document.getElementById('sheet').innerHTML = ''; document.body.style.overflow = ''; S.pickFor = null; document.getElementById('app').inert = document.getElementById('tabs').inert = false; if (S.ret && S.ret.isConnected) S.ret.focus(); S.ret = null; }
 function comboSheet(no) {
   var p = byNo[no], f = comboFit(p);
   openSheet('<span class="num">배색 ' + no + '</span>', '<div class="big">' + p.c.map(function (i) { return '<span style="background:' + C[i].hex + '"></span>'; }).join('') + '</div>' +
@@ -271,17 +279,18 @@ function comboSheet(no) {
     '<p class="note">입혀 보기는 여름뮤트와 거리가 있는 색을 먼저 가방·신발에, 잘 맞는 색을 상의·머플러에, 탁한 색을 아우터·하의에 둬요. 이미 고른 칸은 그대로예요.</p>');
 }
 function colorSheet(i) {
+  S.pickFor = null;   // 색 보기는 칸 고르기와 별개 (칸에 넣기는 아래 '코디에 넣기' 칩으로)
   var c = C[i], list = P.filter(function (p) { return p.c.indexOf(i) >= 0; });
   openSheet(esc(c.n), '<div class="big" style="height:140px"><span style="background:' + c.hex + '"></span></div>' + crow(i) +
     '<p class="note">' + esc(c.why.join(' · ')) + '</p>' +
-    (S.pickFor ? '<div class="acts" style="grid-template-columns:1fr"><button class="btn pri" data-act="setSlot" data-i="' + i + '">이 색으로 정하기</button></div>' : '') +
+    '<h3 class="h3">코디에 넣기</h3><div class="bar" style="margin-top:8px">' + SLOTS.map(function (s) { return '<button class="chip" data-act="toSlot" data-k="' + s[0] + '" data-i="' + i + '">' + s[1] + (s[2] && !good(i) ? ' · 비추천' : '') + '</button>'; }).join('') + '</div>' +
     '<h3 class="h3">이 색이 들어간 배색 <span class="sum num">' + list.length + '</span></h3><div class="mini">' + list.map(plateCard).join('') + '</div>');
 }
 function pickerSheet(k) {
   S.pickFor = k; var s = SLOTS.filter(function (x) { return x[0] === k; })[0];
-  var h = '<div class="acts" style="grid-template-columns:1fr;margin:0 0 12px"><label class="btn">' + ic('camera') + '옷 사진에서 색 고르기<input type="file" accept="image/*" capture="environment" class="sr" data-act="photo"></label></div><div id="photoBox"></div>';
+  var h = '<div class="acts" style="grid-template-columns:1fr;margin:0 0 12px"><label class="btn">' + ic('camera') + '옷 사진·갤러리에서 색 고르기<input type="file" accept="image/*" class="sr" data-act="photo"></label></div><div id="photoBox"></div>';
   if (s[2]) h += '<p class="note" style="margin:0 0 10px">얼굴 가까이 오는 칸이라 별표(여름뮤트 베스트) 색을 권해요.</p>';
-  FAMS.forEach(function (f, g) { h += '<h3 class="h3" style="margin:12px 0 8px">' + f + '</h3><div class="chips">' + C.filter(function (c) { return c.g === g; }).map(function (c) { return colorChip(c).replace('data-act="color"', 'data-act="setSlot"'); }).join('') + '</div>'; });
+  FAMS.forEach(function (f, g) { h += '<h3 class="h3" style="margin:12px 0 8px">' + f + '</h3><div class="chips">' + C.filter(function (c) { return c.g === g; }).map(function (c) { return colorChip(c).replace(' ghost', '').replace('data-act="color"', 'data-act="setSlot"'); }).join('') + '</div>'; });
   h += S.outfit[k] != null ? '<div class="acts" style="grid-template-columns:1fr"><button class="btn" data-act="setSlot" data-i="-1">이 칸 비우기</button></div>' : '';
   openSheet(s[1] + ' 색', h);
 }
@@ -310,6 +319,8 @@ function onPhoto(input) {
         near.map(function (x) { return '<button class="slot" data-act="setSlot" data-i="' + x.c.i + '" style="width:100%"><span class="sw" style="background:' + x.c.hex + '"></span><span class="t">' + esc(x.c.n) + ' · ' + esc(x.c.ko) + '<small>' + (x.d < 8 ? '거의 같아요' : x.d < 16 ? '비슷해요' : '조금 달라요') + ' · ' + GRADE[x.c.gr] + '</small></span></button>'; }).join('');
     });
   };
+  img.onerror = function () { URL.revokeObjectURL(url); toast('이 사진은 열 수 없어요 · JPG나 PNG로 다시 골라 주세요'); };
+  input.value = '';
   img.src = url;
 }
 // 입혀 보기: 빈 칸만 채움. 얼굴 칸 = 어울리는 색 우선, 넓은 칸 = 탁한(채도 낮은) 색, 작은 칸 = 남은 색
@@ -317,14 +328,14 @@ function wear(no) {
   var p = byNo[no], o = S.outfit, used = Object.keys(o).map(function (k) { return o[k]; }), pool = p.c.filter(function (i) { return used.indexOf(i) < 0; });
   var lab = function (i) { var c = C[i].lab; return Math.hypot(c[1], c[2]); };
   var take = function (pick) { if (!pool.length) return null; var i = pick(pool.slice()); pool.splice(pool.indexOf(i), 1); return i; };
-  var order = [['top', function (a) { return a.sort(function (x, y) { return C[y].s - C[x].s; })[0]; }], ['outer', function (a) { return a.sort(function (x, y) { return lab(x) - lab(y); })[0]; }],
-    ['bottom', function (a) { return a.sort(function (x, y) { return lab(x) - lab(y); })[0]; }], ['scarf', function (a) { return a.sort(function (x, y) { return C[y].s - C[x].s; })[0]; }],
-    ['bag', function (a) { return a.sort(function (x, y) { return lab(y) - lab(x); })[0]; }], ['shoes', function (a) { return a.sort(function (x, y) { return C[x].lab[0] - C[y].lab[0]; })[0]; }]];
+  var order = [['top', function (a) { return a.sort(function (x, y) { return C[y].s - C[x].s; })[0]; }], ['scarf', function (a) { return a.sort(function (x, y) { return C[y].s - C[x].s; })[0]; }],
+    ['bag', function (a) { return a.sort(function (x, y) { return lab(y) - lab(x); })[0]; }], ['bottom', function (a) { return a.sort(function (x, y) { return lab(x) - lab(y); })[0]; }],
+    ['outer', function (a) { return a.sort(function (x, y) { return lab(x) - lab(y); })[0]; }], ['shoes', function (a) { return a.sort(function (x, y) { return C[x].lab[0] - C[y].lab[0]; })[0]; }]];
   var filled = 0;
   ['bag', 'shoes'].forEach(function (k) { if (o[k] != null) return; var bad = pool.filter(function (i) { return !good(i); }); if (!bad.length) return; o[k] = bad[0]; pool.splice(pool.indexOf(bad[0]), 1); filled++; });   // 안 어울리는 색은 얼굴에서 먼 곳부터
   order.forEach(function (x) { if (o[x[0]] == null) { var i = take(x[1]); if (i != null) { o[x[0]] = i; filled++; } } });
   store.set('outfit', o); closeSheet(); S.tab = 'outfit'; store.set('tab', S.tab); render();
-  toast(filled ? '빈 칸 ' + filled + '개를 배색 ' + no + '번 색으로 채웠어요' : '빈 칸이 없어요 · 바꿀 칸을 눌러 고르세요');
+  toast(filled ? '빈 칸 ' + filled + '개를 배색 ' + no + '번 색으로 채웠어요' : SLOTS.some(function (x) { return o[x[0]] == null; }) ? '이 배색 색은 이미 모두 입고 있어요' : '빈 칸이 없어요 · 바꿀 칸을 눌러 고르세요');
 }
 
 // ---------- 렌더 ----------
@@ -332,17 +343,20 @@ var TABS = [['plates', '배색', 'plates'], ['colors', '색', 'colors'], ['outfi
 function render() {
   var app = document.getElementById('app'), y = window.scrollY;
   document.body.classList.toggle('lens-on', S.lens);
-  app.innerHTML = '<header class="top"><h1>배색사전</h1><button class="lens" data-act="lens" aria-pressed="' + S.lens + '" title="여름뮤트에 어울리지 않는 색을 흐리게">' + '<span class="sw" aria-hidden="true"></span>여름뮤트</button></header>' +
+  app.innerHTML = '<header class="top"><h1>배색사전</h1><button class="lens" data-act="lens" aria-pressed="' + S.lens + '" title="여름뮤트에 어울리지 않는 색을 작게">' + '<span class="sw" aria-hidden="true"></span>여름뮤트</button></header>' +
     (S.tab === 'plates' ? viewPlates() : S.tab === 'colors' ? viewColors() : S.tab === 'outfit' ? viewOutfit() : viewSaved());
   document.getElementById('tabs').innerHTML = TABS.map(function (t) { return '<button data-act="tab" data-v="' + t[0] + '"' + (S.tab === t[0] ? ' aria-current="page"' : '') + '>' + ic(t[2]) + t[1] + '</button>'; }).join('');
   if (S.keep) window.scrollTo(0, y); S.keep = false;
 }
 var ACT = {
-  tab: function (el) { S.tab = el.dataset.v; store.set('tab', S.tab); render(); window.scrollTo(0, 0); },
-  lens: function () { S.lens = !S.lens; store.set('lens', S.lens); S.keep = true; render(); toast(S.lens ? '어울리지 않는 색을 흐리게 보여요' : '모든 색을 그대로 보여요'); },
+  tab: function (el) { if (document.querySelector('.sheet')) closeSheet(); S.tab = el.dataset.v; store.set('tab', S.tab); render(); window.scrollTo(0, 0); },
+  lens: function () { S.lens = !S.lens; store.set('lens', S.lens); S.keep = true; render(); toast(S.lens ? '어울리지 않는 색을 작게 보여요' : '모든 색을 같은 크기로 보여요'); },
   size: function (el) { S.size = +el.dataset.v; S.keep = true; render(); },
   fam: function (el) { var v = +el.dataset.v; S.fam = S.fam === v ? -1 : v; S.keep = true; render(); },
-  mine: function () { S.mine = !S.mine; S.keep = true; render(); },
+  mineP: function (el) { var v = +el.dataset.v; S.mineP = S.mineP === v ? 0 : v; store.set('mineP', S.mineP); S.keep = true; render(); },
+  quickTop: function (el) { S.outfit.top = +el.dataset.i; store.set('outfit', S.outfit); S.keep = true; render(); toast('상의에 넣었어요 · 아래 배색에서 입혀 보기'); },
+  toSlot: function (el) { S.pickFor = el.dataset.k; ACT.setSlot(el); },
+  mineC: function () { S.mineC = !S.mineC; store.set('mineC', S.mineC); S.keep = true; render(); },
   sort: function () { S.sort = S.sort === 'fit' ? 'no' : 'fit'; S.keep = true; render(); },
   combo: function (el) { comboSheet(+el.dataset.no); },
   color: function (el) { colorSheet(+el.dataset.i); },
@@ -357,7 +371,13 @@ var ACT = {
   delLook: function (el) { S.looks.splice(+el.dataset.v, 1); store.set('looks', S.looks); S.keep = true; render(); toast('코디를 지웠어요'); }
 };
 document.addEventListener('click', function (e) { var el = e.target.closest('[data-act]'); if (!el || el.tagName === 'INPUT') return; var f = ACT[el.dataset.act]; if (f) { e.preventDefault(); f(el); } });
-document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.querySelector('.sheet')) closeSheet(); var el = e.target.closest && e.target.closest('[role=button][data-act]'); if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); ACT[el.dataset.act](el); } });
+document.addEventListener('keydown', function (e) {
+  var sh = document.querySelector('.sheet');
+  if (sh && e.key === 'Tab') {   // 시트가 열려 있으면 Tab 이 시트 안에서만 돈다
+    var f = [].slice.call(sh.querySelectorAll('button:not([disabled]),[role=button],input,label.btn')).filter(function (x) { return x.offsetParent !== null || x.tagName === 'INPUT'; });
+    if (f.length) { var first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && (document.activeElement === last || !sh.contains(document.activeElement))) { e.preventDefault(); first.focus(); } }
+  }
+  if (e.key === 'Escape' && sh) closeSheet(); var el = e.target.closest && e.target.closest('[role=button][data-act]'); if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); ACT[el.dataset.act](el); } });
 document.addEventListener('change', function (e) { if (e.target.dataset && e.target.dataset.act === 'photo') onPhoto(e.target); });
 render();
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(function () {});
