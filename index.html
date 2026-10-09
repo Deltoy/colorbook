@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 /* 배경은 무채색(푸른·노란 기 없음): 옷 색이 왜곡 없이 보이도록 */
-:root{--bg:#F4F4F5;--card:#fff;--line:#E9E9EC;--line2:#DCDCE0;--ink:#18181B;--ink2:#3F3F46;--mut:#6B6B74;--pri:#155EEF;--pri-ink:#fff;--pri-bg:#EEF3FE;--best:#155EEF;--warn-bg:#FFFBEB;--warn-bd:#FDE68A;--warn:#92400E;--r:20px;--r2:12px;--sh:0 1px 3px rgba(24,24,27,.05);--sw-bd:rgba(0,0,0,.08)}
-@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#161618;--card:#1F1F22;--line:#2B2B2F;--line2:#38383D;--ink:#F4F4F5;--ink2:#D4D4D8;--mut:#A1A1AA;--pri:#4D82F3;--pri-bg:#1C2740;--best:#7FA6F5;--warn-bg:#2B2414;--warn-bd:#6B5520;--warn:#F5D58A;--sh:none;--sw-bd:rgba(255,255,255,.1)}}
+:root{--bg:#F4F4F5;--card:#fff;--line:#E9E9EC;--line2:#DCDCE0;--ink:#18181B;--ink2:#3F3F46;--mut:#6B6B74;--pri:#155EEF;--pri-fill:#155EEF;--pri-ink:#fff;--pri-bg:#EEF3FE;--best:#155EEF;--warn-bg:#FFFBEB;--warn-bd:#FDE68A;--warn:#92400E;--r:20px;--r2:12px;--sh:0 1px 3px rgba(24,24,27,.05);--sw-bd:rgba(0,0,0,.20)}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#161618;--card:#1F1F22;--line:#34343A;--line2:#4A4A50;--ink:#F4F4F5;--ink2:#D4D4D8;--mut:#A1A1AA;--pri:#4D82F3;--pri-fill:#2F6BEB;--pri-bg:#1C2740;--best:#7FA6F5;--warn-bg:#2B2414;--warn-bd:#6B5520;--warn:#F5D58A;--sh:none;--sw-bd:rgba(255,255,255,.28)}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard Variable',Pretendard,-apple-system,system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
@@ -25,20 +25,20 @@ button:focus-visible,a:focus-visible,input:focus-visible,[role=button]:focus-vis
 .app{max-width:1180px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom))}
 header.top{position:sticky;top:0;z-index:20;background:var(--bg);display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 0 10px}
 header.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;white-space:nowrap}
-.tonebtn{display:flex;align-items:center;gap:8px;min-height:44px;min-width:0;padding:0 10px 0 12px;border-radius:999px;background:var(--card);box-shadow:var(--sh),inset 0 0 0 1px var(--line2);font-size:15px;font-weight:700}
+.tonebtn{display:flex;align-items:center;gap:8px;min-height:44px;min-width:0;padding:0 10px 0 12px;border-radius:999px;background:var(--card);box-shadow:var(--sh),inset 0 0 0 1px var(--line2);font-size:16px;font-weight:700}
 .tonebtn span:not(.tdots){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tonebtn .ic{width:18px;height:18px;color:var(--mut)}
-.tonebtn.empty{background:var(--pri);color:var(--pri-ink);box-shadow:none}.tonebtn.empty .ic{color:inherit}
+.tonebtn.empty{background:var(--pri-fill);color:var(--pri-ink);box-shadow:none}.tonebtn.empty .ic{color:inherit}
 .tdots{display:flex;flex:0 0 auto}.tdots i{width:16px;height:16px;border-radius:50%;margin-left:-5px;box-shadow:0 0 0 2px var(--card),inset 0 0 0 1px var(--sw-bd)}.tdots i:first-child{margin-left:0}
 /* 필터 줄 */
 .bar{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px 10px;scroll-padding-inline:16px}.bar::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line2);font-size:14px;font-weight:600;color:var(--ink2);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-@media (pointer:coarse){.chip{min-height:44px}}
+@media (max-width:600px){.chip{min-height:44px}}
 .chip[aria-pressed=true]{background:var(--ink);color:var(--card);box-shadow:none}
 .chip i{width:12px;height:12px;border-radius:50%;display:inline-block}
 .sep{flex:0 0 1px;background:var(--line2);margin:8px 2px}
 .lens .sw{width:30px;height:18px;border-radius:999px;background:var(--line2);position:relative;transition:background .2s;flex:0 0 auto}
 .lens .sw::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .2s}
-.lens[aria-pressed=true]{background:var(--pri-bg);color:var(--pri);box-shadow:inset 0 0 0 1px var(--pri)}.lens[aria-pressed=true] .sw{background:var(--pri)}.lens[aria-pressed=true] .sw::after{transform:translateX(12px)}
+.lens[aria-pressed=true]{background:var(--pri-bg);color:var(--best);box-shadow:inset 0 0 0 1px var(--pri)}.lens[aria-pressed=true] .sw{background:var(--pri)}.lens[aria-pressed=true] .sw::after{transform:translateX(12px)}
 .sum{font-size:14px;color:var(--mut);margin:0 0 12px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
 .sum b{color:var(--ink)}
 .legend{display:inline-flex;align-items:center;gap:4px;margin-left:8px}.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:6px;box-shadow:inset 0 0 0 2px var(--best)}.legend i.b{background:var(--best);box-shadow:none}
@@ -48,12 +48,13 @@ header.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;whit
 @media (min-width:860px){.plates{grid-template-columns:repeat(4,1fr)}}
 @media (min-width:1100px){.plates{grid-template-columns:repeat(5,1fr)}}
 .plate{display:block;width:100%;text-align:left;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh),inset 0 0 0 1px var(--line)}
-.bands{display:flex;aspect-ratio:4/3}
+.bands{display:flex;aspect-ratio:4/3;position:relative}
+.bands::after,.big::after,.strip::after,.hero .hb::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sw-bd);pointer-events:none}
 .bands span{flex:1;position:relative;transition:flex-grow .3s cubic-bezier(.2,.8,.2,1)}
 .plate .cap{display:flex;align-items:center;gap:8px;padding:10px 12px}
-.plate .no{font-size:15px;font-weight:700}
+.plate .no{font-size:16px;font-weight:700}
 .hero{display:block;width:100%;text-align:left;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh),inset 0 0 0 1px var(--line);margin:0 0 14px}
-.hero .hb{display:flex;height:150px}
+.hero .hb{position:relative;display:flex;height:150px}
 @media (min-width:860px){.hero .hb{height:200px}}
 .hero .hb span{flex:1;display:flex;align-items:flex-end;padding:10px}
 .hero .hb em{font-style:normal;font-size:12px;font-weight:600;color:#18181B;background:rgba(255,255,255,.9);padding:3px 8px;border-radius:999px;line-height:1.3;white-space:nowrap}
@@ -68,7 +69,7 @@ header.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;whit
 @media (min-width:480px){.chips{grid-template-columns:repeat(6,minmax(0,1fr))}}@media (min-width:1000px){.chips{grid-template-columns:repeat(9,minmax(0,1fr))}}
 .cc{display:block;text-align:left;min-width:0}.fitwrap>*,.stage>.slots{min-width:0}
 .cc .sw{aspect-ratio:1;border-radius:var(--r2);box-shadow:inset 0 0 0 1px var(--sw-bd);position:relative;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.cc .sw .st{position:absolute;right:5px;bottom:5px;width:20px;height:20px;border-radius:50%;background:#fff;color:var(--pri);display:grid;place-items:center;box-shadow:0 1px 2px rgba(0,0,0,.15)}.cc .sw .st .ic{width:13px;height:13px;fill:currentColor}
+.cc .sw .st{position:absolute;right:5px;bottom:5px;width:20px;height:20px;border-radius:50%;background:var(--card);color:var(--best);display:grid;place-items:center;box-shadow:0 1px 2px rgba(0,0,0,.15)}.cc .sw .st .ic{width:13px;height:13px;fill:currentColor}
 .cc small{display:block;font-size:12px;color:var(--ink2);margin-top:4px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cc small span{display:block;color:var(--mut);overflow:hidden;text-overflow:ellipsis}
 .chips.pk small span{display:none}
@@ -82,35 +83,40 @@ header.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;whit
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .sheet:focus{outline:none}
 .sh{display:flex;align-items:center;gap:8px;position:sticky;top:-4px;background:var(--card);padding:10px 0 6px;z-index:2}
-.sh h2{font-size:20px;font-weight:800;margin:0;flex:1;letter-spacing:-.01em}
+.sht{flex:1;min-width:0}.sh h2{font-size:20px;font-weight:800;margin:0;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sht p{margin:2px 0 0;font-size:14px;color:var(--mut)}
+.tchip{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px 0 8px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink2);background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2);white-space:nowrap;flex:0 0 auto}.tchip .tdots i{width:14px;height:14px;box-shadow:0 0 0 2px var(--bg),inset 0 0 0 1px var(--sw-bd)}
+.cam{cursor:pointer;box-shadow:inset 0 0 0 1px var(--line2)}.cam:focus-within{outline:3px solid var(--pri);outline-offset:2px}
 .ib{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--ink2);flex:0 0 auto}
 .ib:hover{background:var(--bg)}
-.big{display:flex;height:160px;border-radius:var(--r);overflow:hidden;margin:4px 0 12px;box-shadow:inset 0 0 0 1px var(--line)}
+.big{position:relative;display:flex;height:160px;border-radius:var(--r);overflow:hidden;margin:4px 0 12px;box-shadow:inset 0 0 0 1px var(--line)}
 .big span{flex:1}
 .crow{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
 .crow:first-child{border-top:0}
 .crow .sw{width:44px;height:44px;border-radius:var(--r2);flex:0 0 auto;box-shadow:inset 0 0 0 1px var(--sw-bd)}
-.crow .t{flex:1;min-width:0}.crow b{display:block;font-size:15px}.crow b span{font-weight:500;color:var(--mut);font-size:13px}.crow small{display:block;font-size:13px;color:var(--mut)}
+.crow .t{flex:1;min-width:0}.crow b{display:block;font-size:16px}.crow b span{font-weight:500;color:var(--mut);font-size:12px}.crow small{display:block;font-size:12px;color:var(--mut)}
 .grade{flex:0 0 auto;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
 .grade.best{background:var(--pri-bg);color:var(--best)}.grade.good{background:var(--pri-bg);color:var(--ink2)}.grade.ok{background:var(--bg);color:var(--mut)}.grade.avoid{background:var(--warn-bg);color:var(--warn)}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.btn{min-height:48px;border-radius:var(--r2);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2);white-space:nowrap;cursor:pointer}
-.btn.pri{background:var(--pri);color:var(--pri-ink);box-shadow:none}
+.btn{min-height:48px;border-radius:var(--r2);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line2);white-space:nowrap;cursor:pointer}
+.btn.pri{background:var(--pri-fill);color:var(--pri-ink);box-shadow:none}
+.btn.tint{background:var(--pri-bg);color:var(--best);box-shadow:inset 0 0 0 1px var(--pri)}
+.done{display:inline-flex;align-items:center;gap:4px;min-height:44px;padding:0 10px;font-size:14px;font-weight:700;color:var(--best)}.done .ic{width:18px;height:18px}.sug.used{box-shadow:var(--sh),inset 0 0 0 2px var(--pri)}
 .btn.wide{width:100%;margin-top:12px}
-.note{font-size:13px;color:var(--mut);margin:12px 0 0}.note.ok{color:var(--best);font-weight:600;margin:0 0 4px}.sheet .note:not(.ok){margin-top:6px}
+.note{font-size:12px;color:var(--mut);margin:12px 0 0}.note.ok{color:var(--best);font-weight:600;margin:0 0 4px}.sheet .note:not(.ok){margin-top:6px}
 .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 @media (min-width:480px){.mini{grid-template-columns:repeat(4,1fr)}}
-.mini .plate .cap{padding:6px 8px}.mini .plate .no{font-size:13px}
+.mini .plate .cap{padding:6px 8px}.mini .plate .no{font-size:12px}
 .h3{font-size:14px;font-weight:700;margin:16px 0 8px;color:var(--ink2)}.h3 span{color:var(--mut);font-weight:500}
 .more summary{list-style:none;margin:16px 0 0}.more summary::-webkit-details-marker{display:none}.more[open] summary{margin-bottom:10px}
 .more summary .ic{width:18px;height:18px;transition:transform .2s}.more[open] summary .ic{transform:rotate(180deg)}
 /* 톤 고르기 */
 .season{display:grid;grid-template-columns:36px minmax(0,1fr);gap:8px;align-items:center;margin-top:10px}
+@media (min-width:860px){.sheet.tonesheet{width:840px}.seasons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 8px;margin-top:8px}.season{grid-column:span var(--n);grid-template-columns:minmax(0,1fr);gap:6px;margin:0;align-items:start}}
 .season>b{font-size:14px;color:var(--ink2)}
 .tones{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px}
 .tone{display:block;text-align:left;border-radius:var(--r2);background:var(--card);box-shadow:inset 0 0 0 1px var(--line2);overflow:hidden;min-width:0}
 .tone[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--pri)}
-.tone .strip{display:flex;height:36px;margin:4px 4px 0;border-radius:8px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--sw-bd)}.tone .strip i{flex:1}
+.tone .strip{position:relative;display:flex;height:36px;margin:4px 4px 0;border-radius:8px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--sw-bd)}.tone .strip i{flex:1}
 .tone .tn{display:flex;align-items:center;gap:4px;min-height:36px;padding:0 10px;font-size:14px;font-weight:700;white-space:nowrap}.tone .tn .ic{width:16px;height:16px;color:var(--pri);margin-left:auto}
 /* 코디 */
 .fitwrap{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
@@ -118,18 +124,21 @@ header.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;whit
 @media (min-width:400px){.stage{grid-template-columns:136px minmax(0,1fr)}}
 .stage>svg{width:100%;height:auto;display:block}
 .stage svg .pt{cursor:pointer;transition:fill .2s}
-.slots{display:grid;gap:2px}
-.slot{display:flex;align-items:center;gap:10px;min-height:44px;width:100%;padding:3px 4px 3px 3px;border-radius:12px;text-align:left}
-.slot:hover{background:var(--bg)}.slot.on{background:var(--pri-bg)}
+.slots{display:grid;gap:6px}
+.slot{position:relative;display:flex;align-items:center;gap:10px;min-height:44px;width:100%;padding:3px 4px 3px 3px;border-radius:12px;text-align:left}
+.slot:hover{background:var(--bg)}
 .slot .sw{width:38px;height:38px;border-radius:10px;flex:0 0 auto;box-shadow:inset 0 0 0 1px var(--sw-bd)}
-.slot .sw.none{background:repeating-linear-gradient(135deg,transparent 0 5px,var(--line) 5px 6px);box-shadow:inset 0 0 0 1.5px var(--line2)}
+.slot.none .sw{display:grid;place-items:center;color:var(--mut);background:repeating-linear-gradient(135deg,transparent 0 5px,var(--line2) 5px 6px);box-shadow:inset 0 0 0 1.5px var(--line2)}.slot.none .sw .ic{width:18px;height:18px;background:var(--card);border-radius:50%}.slot.none .t{color:var(--mut);font-weight:500}
+.slot.on{background:var(--pri-bg)}.slot.on .sw{color:var(--best);box-shadow:inset 0 0 0 1.5px var(--pri)}.slot.on .t{color:var(--best);font-weight:700}.slot .ck{width:18px;height:18px;color:var(--best)}
 .slot .t{flex:1;min-width:0;font-size:14px;font-weight:600;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.slot .t small{display:block;font-weight:400;color:var(--mut);font-size:12px;overflow:hidden;text-overflow:ellipsis}
-.slot .cv{width:16px;height:16px;color:var(--mut)}.slot .wn{width:18px;height:18px;color:var(--warn)}
+.slot .wn{width:18px;height:18px;color:var(--warn)}
 .stage .foot{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .stage .foot .btn{min-height:44px;font-size:14px}
-/* 넓은 화면: 코디판은 위쪽 가로 띠, 색·배색 목록은 아래 전체 폭 (높이 다른 두 열을 나란히 두지 않음) */
-@media (min-width:860px){.stage{grid-template-columns:88px minmax(0,1fr);gap:8px 20px;padding:12px 16px;align-content:center}.stage>svg{grid-row:1/3}.slots{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 12px}.slot{min-height:56px}.slot .sw{width:44px;height:44px}.slot .cv{display:none}.stage .foot{grid-column:2;grid-template-columns:repeat(2,minmax(0,180px));justify-content:end}}
-.ph{display:flex;align-items:baseline;gap:8px;margin:2px 0 10px;flex-wrap:wrap}.ph h2{font-size:18px;font-weight:800;margin:0;letter-spacing:-.01em}.ph span{font-size:13px;color:var(--mut)}
+/* 넓은 화면: 코디판 = 한 줄 (그림 · 여섯 칸 타일 · 저장/비우기), 색·배색 목록은 아래 전체 폭 */
+@media (min-width:860px){.stage{grid-template-columns:64px minmax(0,1fr) 132px;gap:16px;padding:12px 16px}.slots{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.slot{flex-direction:column;justify-content:center;gap:6px;padding:8px 4px;text-align:center}.slot .sw{width:64px;height:64px;border-radius:14px}.slot .t{flex:0 0 auto;width:100%}
+.slot .ck,.slot .wn{position:absolute;top:2px;right:calc(50% - 46px);background:var(--card);border-radius:50%;padding:2px;width:22px;height:22px}.toast{top:calc(14px + env(safe-area-inset-top))}.stage .foot{grid-column:3;grid-template-columns:1fr;gap:8px}}
+.ph{display:flex;align-items:baseline;gap:8px;margin:2px 0 10px;flex-wrap:wrap}.ph h2{font-size:18px;font-weight:800;margin:0;letter-spacing:-.01em}.ph span{font-size:12px;color:var(--mut)}
 .sugs .chips{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media (min-width:600px){.sugs .chips{grid-template-columns:repeat(8,minmax(0,1fr))}}@media (min-width:1000px){.sugs .chips{grid-template-columns:repeat(10,minmax(0,1fr))}}
 .sglist{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
@@ -137,18 +146,20 @@ header.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;whit
 .sug{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:var(--r);box-shadow:var(--sh),inset 0 0 0 1px var(--line);padding:8px;overflow:hidden}
 .sug .bands{width:112px;aspect-ratio:auto;height:64px;border-radius:12px;overflow:hidden;flex:0 0 auto;cursor:pointer}
 .sug .row{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
-.sug .t{flex:1;min-width:0;font-size:14px}.sug .t b{display:block;font-size:15px}.sug .t small{color:var(--mut)}
+.sug .t{flex:1;min-width:0;font-size:14px}.sug .t b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;line-height:1.35;font-weight:700}.sug .t small{font-size:12px}.sug .t small{color:var(--mut)}
 .sug .btn{min-height:44px;flex:0 0 auto}
 .looks{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}@media (min-width:860px){.looks{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .looks .sug .row .btn{padding:0 12px}
-.warn{display:flex;gap:8px;align-items:center;background:var(--warn-bg);box-shadow:inset 0 0 0 1px var(--warn-bd);color:var(--warn);border-radius:var(--r2);padding:10px 12px;font-size:14px;margin:0 0 12px}
-.empty{background:var(--card);border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line);padding:16px;font-size:15px;color:var(--ink2)}
+.warn{width:100%;text-align:left;font-weight:600;min-height:44px;display:flex;gap:8px;align-items:center;background:var(--warn-bg);box-shadow:inset 0 0 0 1px var(--warn-bd);color:var(--warn);border-radius:var(--r2);padding:10px 12px;font-size:14px;margin:0 0 12px}
+.warn span{flex:1}
+.hint{width:100%;display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 14px;border-radius:var(--r);background:var(--card);box-shadow:var(--sh),inset 0 0 0 1px var(--line);font-size:16px;font-weight:700;text-align:left}.hint span:last-child{flex:1}
+.hint .pl{width:44px;height:44px;border-radius:var(--r2);display:grid;place-items:center;background:var(--pri-fill);color:#fff;flex:0 0 auto}
+.empty{background:var(--card);border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line);padding:16px;font-size:16px;color:var(--ink2)}
 .empty b{color:var(--ink)}
 /* 사진 */
-.photo-btn{width:100%;margin-top:4px}
 .photo{position:relative;border-radius:var(--r);overflow:hidden;background:var(--bg);touch-action:none;margin-top:10px}
 .photo canvas{display:block;width:auto;max-width:100%;max-height:45dvh;height:auto;margin:0 auto;cursor:crosshair}
-.photo .tip{position:absolute;left:8px;top:8px;background:rgba(9,9,11,.7);color:#fff;font-size:13px;padding:4px 10px;border-radius:999px}
+.photo .tip{position:absolute;left:8px;top:8px;background:rgba(9,9,11,.7);color:#fff;font-size:12px;padding:4px 10px;border-radius:999px}
 .pick{display:flex;align-items:center;gap:10px;margin-top:10px}
 .pick .sw{width:44px;height:44px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--sw-bd)}
 /* 하단 탭 */
@@ -157,8 +168,7 @@ nav.tabs button{min-height:58px;display:flex;flex-direction:column;align-items:c
 nav.tabs button[aria-current=page]{color:var(--pri)}nav.tabs button:focus-visible{outline-offset:-4px;border-radius:16px}
 nav.tabs svg{width:24px;height:24px}
 @media (min-width:860px){nav.tabs{left:50%;right:auto;bottom:16px;transform:translateX(-50%);width:400px;border-radius:999px;border:0;box-shadow:0 6px 20px rgba(9,9,11,.10),inset 0 0 0 1px var(--line);overflow:hidden}}
-.toast{position:fixed;bottom:calc(74px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;animation:fade .2s;white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
-@media (min-width:860px){.toast{bottom:92px}}
+.toast{position:fixed;pointer-events:none;top:calc(70px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;animation:fade .2s;white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
 .ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
@@ -172,12 +182,21 @@ nav.tabs svg{width:24px;height:24px}
 <script>
 'use strict';
 // ---------- 상태 ----------
-var C = CB.colors, P = CB.combos, byNo = {}; P.forEach(function (p) { byNo[p.no] = p; });
+var C = CB.colors, P = CB.combos, byNo = Object.create(null); P.forEach(function (p) { byNo[p.no] = p; });
 var store = { get: function (k, d) { try { var v = localStorage.getItem('cb.' + k); if (v == null) return d; var r = JSON.parse(v); return r != null && typeof r === typeof d && Array.isArray(r) === Array.isArray(d) ? r : d; } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem('cb.' + k, JSON.stringify(v)); } catch (e) {} } };
-var S = { tab: store.get('tab', 'outfit'), tone: store.get('tone', ''), lens: store.get('lens', true), size: 0, fam: -1, mineP: store.get('mineP', 0), favs: store.get('favs', []), outfit: store.get('outfit', {}), looks: store.get('looks', []) };
-S.favs = S.favs.filter(function (no) { return byNo[no]; }); S.looks = S.looks.filter(function (l) { return l && l.o && typeof l.o === 'object' && Object.keys(l.o).every(function (k) { return C[l.o[k]]; }); }); Object.keys(S.outfit).forEach(function (k) { if (!C[S.outfit[k]]) delete S.outfit[k]; });
-// 톤: 예전(여름뮤트 고정) 사용자는 저장 기록이 있으면 여름 쿨 뮤트로 이어 감, 처음 온 사람은 톤 고르기부터
-if (!FIT.TONES.some(function (t) { return t.id === S.tone; })) { S.tone = ''; try { if (['favs', 'outfit', 'looks', 'tab', 'lens'].some(function (k) { return localStorage.getItem('cb.' + k) != null; })) { S.tone = 'sum'; store.set('tone', 'sum'); } } catch (e) {} }
+var SLOTS = [['scarf', '머플러·스카프', true, '머플러'], ['outer', '아우터', true, '아우터'], ['top', '상의', true, '상의'], ['bottom', '하의', false, '하의'], ['bag', '가방', false, '가방'], ['shoes', '신발', false, '신발']];
+var TABS = [['outfit', '코디', 'outfit'], ['plates', '배색', 'plates'], ['colors', '색', 'colors'], ['saved', '내 코디', 'saved']];
+// 저장값 검사: 망가진 값이 있어도 앱이 비지 않게 (색 번호는 숫자 + 실제 있는 색만)
+function ok(i) { return typeof i === 'number' && C[i] !== undefined; }
+function cleanOutfit(o) { var r = {}; if (o && typeof o === 'object' && !Array.isArray(o)) SLOTS.forEach(function (s) { if (Object.prototype.hasOwnProperty.call(o, s[0]) && ok(o[s[0]])) r[s[0]] = o[s[0]]; }); return r; }
+var S = { tab: store.get('tab', 'outfit'), tone: store.get('tone', ''), lens: store.get('lens', true), size: 0, fam: -1, mineP: store.get('mineP', 0), favs: store.get('favs', []), outfit: cleanOutfit(store.get('outfit', {})), looks: store.get('looks', []) };
+if (!TABS.some(function (t) { return t[0] === S.tab; })) S.tab = 'outfit';
+if ([0, 1, 2].indexOf(S.mineP) < 0) S.mineP = 0;
+S.favs = S.favs.filter(function (no, k, a) { return typeof no === 'number' && byNo[no] && a.indexOf(no) === k; });
+S.looks = S.looks.filter(function (l) { return l && typeof l === 'object' && typeof l.name === 'string' && l.o && typeof l.o === 'object' && !Array.isArray(l.o) && Object.keys(l.o).length && Object.keys(l.o).every(function (k) { return SLOTS.some(function (s) { return s[0] === k; }) && ok(l.o[k]); }); });
+// 톤: 예전(여름뮤트 고정) 사용자 = 저장한 배색·코디가 있고 v2 표시가 없음 → 여름 쿨 뮤트로 이어 감. 처음 온 사람은 톤부터 고름
+if (!FIT.TONES.some(function (t) { return t.id === S.tone; })) { S.tone = ''; try { if (localStorage.getItem('cb.v2') == null && (localStorage.getItem('cb.favs') != null || localStorage.getItem('cb.looks') != null)) { S.tone = 'sum'; store.set('tone', 'sum'); } } catch (e) {} }
+store.set('v2', 1);
 function tone() { return FIT.TONES.filter(function (t) { return t.id === (S.tone || 'sum'); })[0]; }
 function applyTone() { C.forEach(function (c) { var f = FIT.fit(c.lab, tone().id); c.s = f.score; c.gr = f.grade; c.why = f.why; }); }
 function toneSw(id) { var t = FIT.TONES.filter(function (x) { return x.id === id; })[0], pick = []; C.map(function (c) { return { c: c, s: FIT.fit(c.lab, t.id).score }; }).sort(function (a, b) { return b.s - a.s; }).forEach(function (x) { if (pick.length < 5 && pick.every(function (p) { return Math.hypot(p.lab[0] - x.c.lab[0], p.lab[1] - x.c.lab[1], p.lab[2] - x.c.lab[2]) > 28; })) pick.push(x.c); }); return pick; }   // 톤 대표색 5개: 점수 높은 순, 서로 다른 색만
@@ -185,7 +204,6 @@ applyTone();
 var FAMS = ['분홍·빨강', '노랑·갈색', '초록', '파랑·청록', '보라', '무채색'];
 var FAM_DOT = ['#e1868d', '#d9b26b', '#7ea777', '#5a82b3', '#9a7fb8', '#9aa0a6'];
 var GRADE = { best: '베스트', good: '잘 어울려요', ok: '무난해요', avoid: '피하는 게 좋아요' };
-var SLOTS = [['scarf', '머플러·스카프', true], ['outer', '아우터', true], ['top', '상의', true], ['bottom', '하의', false], ['bag', '가방', false], ['shoes', '신발', false]];
 var I = {
   plates: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
   colors: '<circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.7-.8 1.7-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.8-1.7 1.7-1.7H16c3.1 0 5.6-2.5 5.6-5.6C21.9 6 17.5 2 12 2z"/>',
@@ -194,7 +212,7 @@ var I = {
   x: '<path d="M18 6 6 18M6 6l12 12"/>', star: '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
   camera: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/>',
   alert: '<path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4M12 17h.01"/>',
-  trash: '<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>', chev: '<path d="m6 9 6 6 6-6"/>', check: '<path d="M20 6 9 17l-5-5"/>', reset: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'
+  trash: '<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>', plus: '<path d="M12 5v14M5 12h14"/>', right: '<path d="m9 18 6-6-6-6"/>', chev: '<path d="m6 9 6 6 6-6"/>', check: '<path d="M20 6 9 17l-5-5"/>', reset: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'
 };
 function ic(n, cls) { return '<svg class="ic ' + (cls || '') + '" viewBox="0 0 24 24" aria-hidden="true">' + I[n] + '</svg>'; }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -260,8 +278,8 @@ function nearestSlotsCombos() {
     .sort(function (a, b) { return b.m - a.m || comboFit(b.p).score - comboFit(a.p).score; });
   return { uniq: uniq, list: list.slice(0, 12) };
 }
-function figure() {
-  var f = function (k) { var i = S.outfit[k]; return i == null ? 'none' : C[i].hex; }, st0 = 'stroke="rgba(0,0,0,.18)" stroke-width="1"', dash = 'stroke="var(--mut)" stroke-width="1.2" stroke-dasharray="3 3"', st = function (k) { return S.outfit[k] == null ? dash : st0; };
+function figure(empty) {
+  var f = function (k) { var i = S.outfit[k]; return i == null ? (empty && k === 'top' ? 'var(--pri-bg)' : 'none') : C[i].hex; }, st0 = 'stroke="rgba(0,0,0,.18)" stroke-width="1"', dash = 'stroke="var(--mut)" stroke-width="1.2" stroke-dasharray="3 3"', st = function (k) { return S.outfit[k] == null ? (empty && k === 'top' ? 'stroke="var(--pri)" stroke-width="1.5"' : dash) : st0; };
   return '<svg viewBox="0 0 150 300" role="img" aria-label="코디 미리보기">' +
     '<circle cx="75" cy="28" r="17" fill="var(--line2)" ' + st0 + '/><rect x="68" y="42" width="14" height="14" rx="4" fill="var(--line2)"/>' +
     '<path class="pt" data-act="slot" data-k="outer" d="M38 70 Q40 58 56 54 L94 54 Q110 58 112 70 L124 150 L108 154 L104 186 L46 186 L42 154 L26 150 Z" fill="' + f('outer') + '" ' + st('outer') + '/>' +
@@ -272,21 +290,21 @@ function figure() {
     '<path d="M112 140 Q119 116 126 140" fill="none" stroke="' + (S.outfit.bag == null ? 'var(--mut)' : C[S.outfit.bag].hex) + '" stroke-width="3" stroke-linecap="round"/><path class="pt" data-act="slot" data-k="bag" d="M106 140 L134 140 L138 178 L102 178 Z" fill="' + f('bag') + '" ' + st('bag') + '/></svg>';
 }
 function viewOutfit() {
-  var h = '<div class="fitwrap"><div class="stage">' + figure() + '<div class="slots">' + SLOTS.map(function (s) {
-    var i = S.outfit[s[0]], c = i == null ? null : C[i], bad = c && s[2] && !good(i);
-    return '<button class="slot" data-act="slot" data-k="' + s[0] + '"><span class="sw' + (c ? '' : ' none') + '"' + (c ? ' style="background:' + c.hex + '"' : '') + '></span><span class="t">' + s[1] + '<small>' + (c ? esc(c.ko) : '색 고르기') + '</small></span>' + (bad ? ic('alert', 'wn') : ic('chev', 'cv')) + '</button>';
-  }).join('') + '</div><div class="foot"><button class="btn" data-act="saveLook">' + ic('saved') + '저장</button><button class="btn" data-act="clearLook">' + ic('reset') + '비우기</button></div></div>';
+  var n = SLOTS.filter(function (s) { return S.outfit[s[0]] != null; }).length;
+  var h = '<div class="fitwrap"><div class="stage">' + figure(!n) + '<div class="slots">' + SLOTS.map(function (s) {
+    var i = S.outfit[s[0]], c = i == null ? null : C[i], bad = c && s[2] && !good(i), on = !n && s[0] === 'top';
+    return '<button class="slot' + (c ? '' : ' none') + (on ? ' on' : '') + '" data-act="slot" data-k="' + s[0] + '" aria-label="' + s[1] + (c ? ', ' + esc(c.ko) : ', 비어 있음') + '"><span class="sw"' + (c ? ' style="background:' + c.hex + '"' : '') + '>' + (c ? '' : ic('plus')) + '</span><span class="t">' + s[1] + (c ? '<small>' + esc(c.ko) + '</small>' : '') + '</span>' + (bad ? ic('alert', 'wn') : c ? ic('check', 'ck') : '') + '</button>';
+  }).join('') + '</div><div class="foot"><button class="btn' + (n >= 3 ? ' pri' : '') + '" data-act="saveLook">' + ic('saved') + '저장</button><button class="btn" data-act="clearLook">' + ic('reset') + '비우기</button></div></div>';
   var faceBad = SLOTS.filter(function (s) { return s[2] && S.outfit[s[0]] != null && !good(S.outfit[s[0]]); });
   var R = nearestSlotsCombos();
   h += '<div class="sugs">';
-  if (faceBad.length) h += '<div class="warn" role="note">' + ic('alert') + '<div><b>' + faceBad.map(function (s) { return s[1]; }).join('·') + '</b> 색이 내 톤과 멀어요 · 가방·신발로 내려 보세요</div></div>';
-  if (!R.uniq.length) {
-    var best = C.filter(function (c) { return c.gr === 'best'; }).sort(function (a, b) { return b.s - a.s; });
-    h += '<div class="ph"><h2>상의 색 고르기</h2><span>' + esc(tone().name) + ' 베스트 <b class="num">' + best.length + '</b></span></div><div class="chips pk">' + best.map(function (c) { return colorChip(c, 'quickTop', true); }).join('') + '</div>';
-  } else {
-    h += '<div class="ph"><h2>어울리는 배색</h2><span>누르면 빈 칸을 채워요</span></div>';
-    h += R.list.length ? '<div class="sglist">' + R.list.map(function (x) { var p = x.p, ff = comboFit(p);
-      return '<div class="sug">' + bands(p).replace('class="bands"', 'class="bands" data-act="combo" data-no="' + p.no + '" role="button" tabindex="0" aria-label="배색 ' + p.no + '번 자세히"') + '<div class="row"><div class="t"><b class="num">배색 ' + p.no + '</b><small>내 톤 <span class="num">' + (ff.b + ff.g) + '/' + p.c.length + '</span></small></div><button class="btn pri" data-act="wear" data-no="' + p.no + '">입혀 보기</button></div></div>'; }).join('') + '</div>'
+  if (faceBad.length) h += '<button class="warn" data-act="slot" data-k="' + faceBad[0][0] + '">' + ic('alert') + '<span>' + faceBad.map(function (s) { return s[3]; }).join('·') + ' 색은 내 톤과 달라요</span>' + ic('right') + '</button>';
+  if (!R.uniq.length) h += '<button class="hint" data-act="slot" data-k="top"><span class="pl">' + ic('plus') + '</span><span>상의부터 한 칸 눌러 보세요</span></button>';
+  else {
+    h += '<div class="ph"><h2>어울리는 배색</h2><span>이 색과 어울려요</span></div>';
+    h += R.list.length ? '<div class="sglist">' + R.list.map(function (x) { var p = x.p, ff = comboFit(p), used = S.lastWear === p.no, names = p.c.map(function (i) { return C[i].ko; }).filter(function (v, k, a) { return a.indexOf(v) === k; }).join(' · ');
+      return '<div class="sug' + (used ? ' used' : '') + '">' + bands(p).replace('class="bands"', 'class="bands" data-act="combo" data-no="' + p.no + '" role="button" tabindex="0" aria-label="배색 ' + p.no + '번 자세히"') + '<div class="row"><div class="t"><b>' + esc(names) + '</b><small>' + p.c.length + '색 중 ' + (ff.b + ff.g) + '색 내 톤</small></div>' +
+        (used ? '<span class="done">' + ic('check') + '입힘</span>' : '<button class="btn tint" data-act="wear" data-no="' + p.no + '" aria-label="배색 ' + p.no + '번 입혀 보기">입혀 보기</button>') + '</div></div>'; }).join('') + '</div>'
       : '<div class="empty">이 색이 들어간 배색이 없어요. 비슷한 색을 골라 보세요.</div>';
   }
   return h + '</div></div>';
@@ -298,27 +316,49 @@ function viewSaved() {
   h += '<div class="ph" style="margin-top:24px"><h2>저장한 코디</h2><span class="num">' + S.looks.length + '</span></div>';
   h += S.looks.length ? '<div class="looks">' + S.looks.map(function (l, k) {
     return '<div class="sug"><div class="bands">' + SLOTS.filter(function (s) { return l.o[s[0]] != null; }).map(function (s) { return '<span style="background:' + C[l.o[s[0]]].hex + '" title="' + s[1] + '"></span>'; }).join('') + '</div><div class="row"><div class="t"><b>' + esc(l.name) + '</b><small>' + SLOTS.filter(function (s) { return l.o[s[0]] != null; }).map(function (s) { return s[1]; }).join(' · ') + '</small></div><button class="btn" data-act="loadLook" data-v="' + k + '">불러오기</button><button class="ib" data-act="delLook" data-v="' + k + '" aria-label="삭제">' + ic('trash') + '</button></div></div>';
-  }).join('') + '</div>' : '<div class="empty">코디 탭에서 <b>저장</b>을 누르면 여기 모여요.</div>';
+  }).join('') + '</div>' : '<div class="empty">코디에서 <b>저장</b>을 누르면 여기 모여요.</div>';
   return h;
 }
 
 // ---------- 시트 ----------
-function openSheet(title, body, cls) {
-  var el = document.getElementById('sheet');
-  if (!S.ret) S.ret = document.activeElement; document.getElementById('app').inert = document.getElementById('tabs').inert = true;
-  el.innerHTML = '<div class="scrim" data-act="close"></div><div class="sheet ' + (cls || '') + '" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="shT"><div class="sh"><h2 id="shT">' + title + '</h2><button class="ib" data-act="close" aria-label="닫기">' + ic('x') + '</button></div>' + body + '</div>';
+// 시트 하나만: 열려 있으면 내용만 바꿈. 폰 뒤로가기 = 시트 닫기 (history 한 칸), 첫 톤 고르기는 닫을 수 없음
+var SH = { hist: false, pending: false };
+function pushSheet() { try { history.pushState({ cbSheet: 1 }, ''); SH.hist = true; } catch (e) {} }
+function selFor(el) {
+  if (!el || el === document.body || !el.dataset) return null;
+  if (el.classList.contains('tonebtn')) return '.tonebtn';
+  if (!el.dataset.act) return null;
+  return el.tagName.toLowerCase() + '[data-act="' + el.dataset.act + '"]' + ['k', 'no', 'i', 'v'].map(function (a) { return el.dataset[a] != null ? '[data-' + a + '="' + el.dataset[a] + '"]' : ''; }).join('');
+}
+function refocus() { var q = S.refocus; if (!q || document.querySelector('.sheet')) return; var el = document.querySelector(q) || document.querySelector('.tonebtn'); if (el) el.focus({ preventScroll: true }); }
+function openSheet(title, body, o) {
+  o = o || {}; var el = document.getElementById('sheet'), was = !!el.querySelector('.sheet');
+  if (!was) { S.opener = selFor(document.activeElement); if (!SH.pending) pushSheet(); }
+  S.locked = !!o.locked; document.getElementById('app').inert = document.getElementById('tabs').inert = true;
+  el.innerHTML = '<div class="scrim"' + (o.locked ? '' : ' data-act="close"') + '></div><div class="sheet ' + (o.cls || '') + '" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="shT"><div class="sh"><div class="sht"><h2 id="shT">' + title + '</h2>' + (o.sub ? '<p>' + o.sub + '</p>' : '') + '</div>' + (o.head || '') + (o.locked ? '' : '<button class="ib" data-act="close" aria-label="닫기">' + ic('x') + '</button>') + '</div>' + body + '</div>';
   document.body.style.overflow = 'hidden'; el.querySelector('.sheet').focus();
 }
-function closeSheet() { document.getElementById('sheet').innerHTML = ''; document.body.style.overflow = ''; S.pickFor = null; document.getElementById('app').inert = document.getElementById('tabs').inert = false; if (S.ret && S.ret.isConnected) S.ret.focus(); S.ret = null; }
+function closeSheet(fromPop) {
+  var el = document.getElementById('sheet'); if (!el.querySelector('.sheet')) return;
+  el.innerHTML = ''; document.body.style.overflow = ''; S.pickFor = null; S.locked = false; document.getElementById('app').inert = document.getElementById('tabs').inert = false;
+  if (!fromPop && SH.hist) { SH.hist = false; SH.pending = true; try { history.back(); } catch (e) { SH.pending = false; } }
+  S.refocus = S.opener; S.opener = null; refocus(); setTimeout(function () { S.refocus = null; }, 0);   // 바로 다시 그려도(render) 같은 버튼으로 돌아가게
+}
+window.addEventListener('popstate', function () {
+  if (SH.pending) { SH.pending = false; if (document.querySelector('.sheet') && !SH.hist) pushSheet(); return; }
+  if (!SH.hist) return; SH.hist = false;
+  if (S.locked) { pushSheet(); return; }   // 톤을 고르기 전엔 뒤로가기로 닫히지 않음 (앱도 안 꺼짐)
+  closeSheet(true);
+});
 function toneSheet() {
-  var h = '';
+  var h = '<div class="seasons">';
   ['봄', '여름', '가을', '겨울'].forEach(function (se) {
     var ts = FIT.TONES.filter(function (t) { return t.season === se; });
-    h += '<div class="season"><b>' + se + '</b><div class="tones" style="--n:' + ts.length + '">' + ts.map(function (t) {
-      return '<button class="tone" data-act="setTone" data-v="' + t.id + '" aria-pressed="' + (S.tone === t.id) + '"><span class="strip">' + toneSw(t.id).map(function (c) { return '<i style="background:' + c.hex + '"></i>'; }).join('') + '</span><span class="tn">' + t.name.split(' ').slice(1).join(' ') + (S.tone === t.id ? ic('check') : '') + '</span></button>';
+    h += '<div class="season" style="--n:' + ts.length + '"><b>' + se + '</b><div class="tones">' + ts.map(function (t) {
+      return '<button class="tone" data-act="setTone" data-v="' + t.id + '" aria-pressed="' + (S.tone === t.id) + '" aria-label="' + t.name + '"><span class="strip">' + toneSw(t.id).map(function (c) { return '<i style="background:' + c.hex + '"></i>'; }).join('') + '</span><span class="tn">' + t.name.split(' ').slice(1).join(' ') + (S.tone === t.id ? ic('check') : '') + '</span></button>';
     }).join('') + '</div></div>';
   });
-  openSheet('내 퍼스널컬러', h + '<p class="note">잘 모르겠다면 가장 가까운 계절을 고르세요. 언제든 위에서 바꿀 수 있어요.</p>', 'wide');
+  openSheet('내 퍼스널컬러는?', h + '</div>', { cls: 'tonesheet', sub: '몰라도 괜찮아요. 가까운 계절을 고르면 돼요.', locked: !S.tone });
 }
 function comboSheet(no) {
   var p = byNo[no], f = comboFit(p);
@@ -334,17 +374,20 @@ function colorSheet(i) {
     '<h3 class="h3">코디에 넣기</h3><div class="bar" style="margin-top:8px">' + SLOTS.map(function (s) { return '<button class="chip" data-act="toSlot" data-k="' + s[0] + '" data-i="' + i + '">' + s[1] + '</button>'; }).join('') + '</div>' +
     '<h3 class="h3">이 색이 들어간 배색 <span class="num">' + list.length + '</span></h3><div class="mini">' + list.map(plateCard).join('') + '</div>');
 }
-// 칸 색 고르기: 내 톤 베스트 → 잘 어울려요 (얼굴에서 먼 칸은 무난해요까지) → 나머지는 '다른 색도 보기' 뒤에
+// 칸 색 고르기: 내 톤 대표 색 → 이 색도 좋아요 (얼굴에서 먼 칸은 무난한 색까지) → 나머지는 '다른 색도 보기' 뒤에
 function pickerSheet(k) {
-  S.pickFor = k; var s = SLOTS.filter(function (x) { return x[0] === k; })[0], shown = s[2] ? ['best', 'good'] : ['best', 'good', 'ok'];
+  var s = SLOTS.filter(function (x) { return x[0] === k; })[0]; if (!s) return;
+  var shown = s[2] ? ['good'] : ['good', 'ok'], t = tone();
   var grid = function (cs) { return '<div class="chips pk">' + cs.map(function (c) { return colorChip(c, 'setSlot', true); }).join('') + '</div>'; };
-  var by = function (g) { return C.filter(function (c) { return c.gr === g; }).sort(function (a, b) { return b.s - a.s; }); };
-  var rest = C.filter(function (c) { return shown.indexOf(c.gr) < 0; }).sort(function (a, b) { return a.g - b.g || b.s - a.s; });
-  var h = '<label class="btn photo-btn">' + ic('camera') + '사진에서 색 찾기<input type="file" accept="image/*" class="sr" data-act="photo"></label><div id="photoBox"></div>';
-  shown.forEach(function (g) { var cs = by(g); if (cs.length) h += '<h3 class="h3">' + (g === 'best' ? esc(tone().name) + ' 베스트' : GRADE[g]) + ' <span class="num">' + cs.length + '</span></h3>' + grid(cs); });
+  var sort = function (a, b) { return b.s - a.s; }, best = C.filter(function (c) { return c.gr === 'best'; }).sort(sort), more = C.filter(function (c) { return shown.indexOf(c.gr) >= 0; }).sort(sort);
+  var rest = C.filter(function (c) { return c.gr !== 'best' && shown.indexOf(c.gr) < 0; }).sort(function (a, b) { return a.g - b.g || b.s - a.s; });
+  var head = '<button class="tchip" data-act="tone" aria-label="내 톤 ' + esc(t.name) + ', 바꾸기">' + toneDots(t.id, 2) + esc(t.name) + '</button><label class="ib cam" aria-label="사진에서 색 찾기">' + ic('camera') + '<input type="file" accept="image/*" class="sr" data-act="photo"></label>';
+  var h = '<div id="photoBox"></div><h3 class="h3">내 톤 대표 색 <span class="num">' + best.length + '</span></h3>' + grid(best);
+  if (more.length) h += '<h3 class="h3">이 색도 좋아요 <span class="num">' + more.length + '</span></h3>' + grid(more);
   h += '<details class="more"><summary class="btn">다른 색도 보기 <span class="num">' + rest.length + '</span>' + ic('chev') + '</summary>' + grid(rest) + '</details>';
   if (S.outfit[k] != null) h += '<button class="btn wide" data-act="setSlot" data-i="-1">' + ic('reset') + '이 칸 비우기</button>';
-  openSheet(s[1] + ' 색', h);
+  openSheet(s[3] + ' 색', h, { head: head });
+  S.pickFor = k;
 }
 // 사진: 누른 곳 주변 9×9 평균 → Lab → 책 색 중 가장 가까운 3개 (ΔE76)
 function srgbToLab(r, g, b) {
@@ -371,13 +414,13 @@ function onPhoto(input) {
         near.map(function (x) { return '<button class="slot" data-act="setSlot" data-i="' + x.c.i + '" style="width:100%"><span class="sw" style="background:' + x.c.hex + '"></span><span class="t">' + esc(x.c.n) + ' · ' + esc(x.c.ko) + '<small>' + (x.d < 8 ? '거의 같아요' : x.d < 16 ? '비슷해요' : '조금 달라요') + ' · ' + GRADE[x.c.gr] + '</small></span></button>'; }).join('');
     });
   };
-  img.onerror = function () { URL.revokeObjectURL(url); toast('이 사진은 열 수 없어요 · JPG나 PNG로 다시 골라 주세요'); };
+  img.onerror = function () { URL.revokeObjectURL(url); toast('이 사진은 열 수 없어요. JPG나 PNG로 골라 주세요'); };
   input.value = '';
   img.src = url;
 }
 // 입혀 보기: 빈 칸만 채움. 얼굴 칸 = 어울리는 색 우선, 넓은 칸 = 탁한(채도 낮은) 색, 작은 칸 = 남은 색
 function wear(no) {
-  var p = byNo[no], o = S.outfit, used = Object.keys(o).map(function (k) { return o[k]; }), pool = p.c.filter(function (i) { return used.indexOf(i) < 0; });
+  var p = byNo[no]; if (!p) return; var o = S.outfit, used = Object.keys(o).map(function (k) { return o[k]; }), pool = p.c.filter(function (i) { return used.indexOf(i) < 0; });
   var lab = function (i) { var c = C[i].lab; return Math.hypot(c[1], c[2]); };
   var take = function (pick) { if (!pool.length) return null; var i = pick(pool.slice()); pool.splice(pool.indexOf(i), 1); return i; };
   var order = [['top', function (a) { return a.sort(function (x, y) { return C[y].s - C[x].s; })[0]; }], ['scarf', function (a) { return a.sort(function (x, y) { return C[y].s - C[x].s; })[0]; }],
@@ -386,50 +429,54 @@ function wear(no) {
   var filled = 0;
   ['bag', 'shoes'].forEach(function (k) { if (o[k] != null) return; var bad = pool.filter(function (i) { return !good(i); }); if (!bad.length) return; o[k] = bad[0]; pool.splice(pool.indexOf(bad[0]), 1); filled++; });   // 안 어울리는 색은 얼굴에서 먼 곳부터
   order.forEach(function (x) { if (o[x[0]] == null) { var i = take(x[1]); if (i != null) { o[x[0]] = i; filled++; } } });
-  store.set('outfit', o); closeSheet(); S.tab = 'outfit'; store.set('tab', S.tab); render();
-  toast(filled ? '빈 칸 ' + filled + '개를 배색 ' + no + '번 색으로 채웠어요' : SLOTS.some(function (x) { return o[x[0]] == null; }) ? '이 배색 색은 이미 모두 입고 있어요' : '빈 칸이 없어요 · 바꿀 칸을 눌러 고르세요');
+  if (filled) S.lastWear = no; store.set('outfit', o); closeSheet(); S.tab = 'outfit'; store.set('tab', S.tab); render();
+  toast(filled ? '채웠어요' : SLOTS.some(function (x) { return o[x[0]] == null; }) ? '이 배색 색은 이미 모두 입고 있어요' : '빈 칸이 없어요 · 바꿀 칸을 눌러 고르세요');
 }
 
 // ---------- 렌더 ----------
-var TABS = [['outfit', '코디', 'outfit'], ['plates', '배색', 'plates'], ['colors', '색', 'colors'], ['saved', '저장', 'saved']];
 function render() {
   var app = document.getElementById('app'), y = window.scrollY, t = S.tone ? tone() : null, lensOn = S.tab === 'plates' || S.tab === 'colors';
   document.body.classList.toggle('lens-on', S.lens && lensOn);
   app.innerHTML = '<header class="top"><h1>배색사전</h1><button class="tonebtn' + (t ? '' : ' empty') + '" data-act="tone" aria-label="내 톤 ' + (t ? esc(t.name) + ', 바꾸기' : '고르기') + '">' + (t ? toneDots(t.id, 3) + '<span>' + esc(t.name) + '</span>' : '<span>내 톤 고르기</span>') + ic('chev') + '</button></header>' +
-    (S.tab === 'plates' ? viewPlates() : S.tab === 'colors' ? viewColors() : S.tab === 'outfit' ? viewOutfit() : viewSaved());
+    (!t ? '' : S.tab === 'plates' ? viewPlates() : S.tab === 'colors' ? viewColors() : S.tab === 'outfit' ? viewOutfit() : viewSaved());   // 톤을 고르기 전엔 색 화면을 그리지 않음
   document.getElementById('tabs').innerHTML = TABS.map(function (t) { return '<button data-act="tab" data-v="' + t[0] + '"' + (S.tab === t[0] ? ' aria-current="page"' : '') + '>' + ic(t[2]) + t[1] + '</button>'; }).join('');
   if (S.keep) window.scrollTo(0, y); S.keep = false;
+  refocus();
 }
 var ACT = {
   tab: function (el) { if (document.querySelector('.sheet')) closeSheet(); S.tab = el.dataset.v; store.set('tab', S.tab); render(); window.scrollTo(0, 0); },
   tone: function () { toneSheet(); },
-  setTone: function (el) { S.tone = el.dataset.v; store.set('tone', S.tone); applyTone(); closeSheet(); S.keep = true; render(); toast(tone().name + ' 색으로 바꿨어요'); },
+  setTone: function (el) {
+    var first = !S.tone; S.tone = el.dataset.v; store.set('tone', S.tone); applyTone(); S.keep = true;
+    if (first) { S.tab = 'outfit'; store.set('tab', S.tab); render(); pickerSheet('top'); return; }   // 처음엔 바로 상의 색 고르기로
+    closeSheet(); render(); toast(tone().name + '으로 바꿨어요');
+  },
   lens: function () { S.lens = !S.lens; store.set('lens', S.lens); S.keep = true; render(); },
   size: function (el) { var v = +el.dataset.v; S.size = S.size === v ? 0 : v; S.keep = true; render(); },
   fam: function (el) { var v = +el.dataset.v; S.fam = S.fam === v ? -1 : v; S.keep = true; render(); },
   mineP: function (el) { var v = +el.dataset.v; S.mineP = S.mineP === v ? 0 : v; store.set('mineP', S.mineP); S.keep = true; render(); },
-  quickTop: function (el) { S.outfit.top = +el.dataset.i; store.set('outfit', S.outfit); S.keep = true; render(); toast('상의에 넣었어요'); },
   toSlot: function (el) { S.pickFor = el.dataset.k; ACT.setSlot(el); },
   combo: function (el) { comboSheet(+el.dataset.no); },
   color: function (el) { colorSheet(+el.dataset.i); },
   close: function () { closeSheet(); },
-  fav: function (el) { var no = +el.dataset.no, k = S.favs.indexOf(no); if (k >= 0) S.favs.splice(k, 1); else S.favs.unshift(no); store.set('favs', S.favs); toast(k >= 0 ? '저장을 취소했어요' : '배색 ' + no + '번을 저장했어요'); comboSheet(no); S.keep = true; render(); },
+  fav: function (el) { var no = +el.dataset.no, k = S.favs.indexOf(no); if (k >= 0) S.favs.splice(k, 1); else S.favs.unshift(no); store.set('favs', S.favs); S.keep = true; render(); comboSheet(no); toast(k >= 0 ? '저장을 취소했어요' : '배색 ' + no + '번을 저장했어요'); },
   wear: function (el) { wear(+el.dataset.no); },
   slot: function (el) { pickerSheet(el.dataset.k); },
-  setSlot: function (el) { var k = S.pickFor; if (!k) { colorSheet(+el.dataset.i); return; } var i = +el.dataset.i; if (i < 0) delete S.outfit[k]; else S.outfit[k] = i; store.set('outfit', S.outfit); closeSheet(); S.keep = true; render(); },
-  saveLook: function () { var ks = Object.keys(S.outfit); if (!ks.length) { toast('먼저 색을 하나 이상 골라 주세요'); return; } var d = new Date(); S.looks.unshift({ name: (d.getMonth() + 1) + '월 ' + d.getDate() + '일 코디', o: JSON.parse(JSON.stringify(S.outfit)) }); store.set('looks', S.looks.slice(0, 60)); toast('코디를 저장했어요'); },
-  clearLook: function () { S.outfit = {}; store.set('outfit', S.outfit); S.keep = true; render(); },
-  loadLook: function (el) { S.outfit = JSON.parse(JSON.stringify(S.looks[+el.dataset.v].o)); store.set('outfit', S.outfit); S.tab = 'outfit'; store.set('tab', S.tab); render(); toast('코디를 불러왔어요'); },
+  setSlot: function (el) { var k = S.pickFor; if (!k) { colorSheet(+el.dataset.i); return; } var i = +el.dataset.i; if (i < 0) delete S.outfit[k]; else if (ok(i)) S.outfit[k] = i; S.lastWear = null; store.set('outfit', S.outfit); closeSheet(); S.keep = true; render(); },
+  saveLook: function () { var ks = Object.keys(S.outfit); if (!ks.length) { toast('먼저 색을 하나 이상 골라 주세요'); return; } var d = new Date(); S.looks.unshift({ name: (d.getMonth() + 1) + '월 ' + d.getDate() + '일 코디', o: JSON.parse(JSON.stringify(S.outfit)) }); S.looks = S.looks.slice(0, 60); store.set('looks', S.looks); toast('코디를 저장했어요'); },
+  clearLook: function () { S.outfit = {}; S.lastWear = null; store.set('outfit', S.outfit); S.keep = true; render(); },
+  loadLook: function (el) { var l = S.looks[+el.dataset.v]; if (!l) return; S.outfit = cleanOutfit(l.o); S.lastWear = null; store.set('outfit', S.outfit); S.tab = 'outfit'; store.set('tab', S.tab); render(); toast('코디를 불러왔어요'); },
   delLook: function (el) { S.looks.splice(+el.dataset.v, 1); store.set('looks', S.looks); S.keep = true; render(); toast('코디를 지웠어요'); }
 };
-document.addEventListener('click', function (e) { var el = e.target.closest('[data-act]'); if (!el || el.tagName === 'INPUT') return; var f = ACT[el.dataset.act]; if (f) { e.preventDefault(); f(el); } });
+var GUARD = { quickTop: 1, wear: 1, setSlot: 1, setTone: 1, toSlot: 1 }, lastTap = 0;   // 300ms 안의 두 번째 탭은 무시 (두 번 눌러 엉뚱한 칸이 바뀌는 것 방지)
+document.addEventListener('click', function (e) { var el = e.target.closest('[data-act]'); if (!el || el.tagName === 'INPUT') return; var a = el.dataset.act, f = ACT[a]; if (!f) return; e.preventDefault(); if (GUARD[a]) { var now = Date.now(); if (now - lastTap < 300) return; lastTap = now; } f(el); });
 document.addEventListener('keydown', function (e) {
   var sh = document.querySelector('.sheet');
   if (sh && e.key === 'Tab') {   // 시트가 열려 있으면 Tab 이 시트 안에서만 돈다
-    var f = [].slice.call(sh.querySelectorAll('button:not([disabled]),[role=button],input,label.btn')).filter(function (x) { return x.offsetParent !== null || x.tagName === 'INPUT'; });
+    var f = [].slice.call(sh.querySelectorAll('button:not([disabled]),[role=button],input,summary')).filter(function (x) { return x.offsetParent !== null || x.tagName === 'INPUT'; });
     if (f.length) { var first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && (document.activeElement === last || !sh.contains(document.activeElement))) { e.preventDefault(); first.focus(); } }
   }
-  if (e.key === 'Escape' && sh) closeSheet(); var el = e.target.closest && e.target.closest('[role=button][data-act]'); if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); ACT[el.dataset.act](el); } });
+  if (e.key === 'Escape' && sh && !S.locked) closeSheet(); var el = e.target.closest && e.target.closest('[role=button][data-act]'); if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); if (ACT[el.dataset.act]) ACT[el.dataset.act](el); } });
 document.addEventListener('change', function (e) { if (e.target.dataset && e.target.dataset.act === 'photo') onPhoto(e.target); });
 render();
 if (!S.tone) toneSheet();
