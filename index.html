@@ -162,6 +162,52 @@ header.top h1{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;whit
 .photo .tip{position:absolute;left:8px;top:8px;background:rgba(9,9,11,.7);color:#fff;font-size:12px;padding:4px 10px;border-radius:999px}
 .pick{display:flex;align-items:center;gap:10px;margin-top:10px}
 .pick .sw{width:44px;height:44px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--sw-bd)}
+/* 오늘 뭐 입지 */
+.daily{background:var(--card);border-radius:var(--r);box-shadow:var(--sh),inset 0 0 0 1px var(--line);padding:14px;margin:0 0 14px;display:grid;gap:12px}
+.dh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.dh h2{font-size:18px;font-weight:800;margin:0;letter-spacing:-.01em}.dh span{font-size:14px;color:var(--mut)}
+.db{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:center}
+.db>svg,.g1>svg{width:100%;height:auto;display:block}
+.dl{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.dl li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;min-width:0}.dl .sw{width:32px;height:32px;border-radius:10px;flex:0 0 auto;box-shadow:inset 0 0 0 1px var(--sw-bd)}.dl .t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dl small{font-size:14px;font-weight:400;color:var(--mut);margin-left:8px}
+.dside{display:grid;gap:12px}
+.why{margin:0;font-size:14px;font-weight:600;color:var(--ink2);display:flex;gap:6px;align-items:center}.why .ic{color:var(--best);width:18px;height:18px}
+.da{display:grid;grid-template-columns:1fr 1fr;gap:8px}.da .btn{min-height:44px;font-size:14px;padding:0 8px}
+@media (min-width:860px){.daily{grid-template-columns:120px max-content minmax(0,1fr);column-gap:32px;align-items:center}.dh{grid-column:1/-1}.db{display:contents}.dl{gap:10px}}
+/* 액세서리 */
+.acc{display:grid;gap:8px}.acc h3{margin:0;font-size:14px;font-weight:700;color:var(--ink2)}.acc h3 span{font-weight:400;color:var(--mut);font-size:12px;margin-left:6px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:4px 10px 4px 6px;border-radius:999px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line);font-size:12px;font-weight:600;color:var(--ink2);max-width:100%}
+.pill i{width:20px;height:20px;border-radius:50%;flex:0 0 auto;box-shadow:inset 0 0 0 1px var(--sw-bd)}.pill .ic{width:18px;height:18px;margin-left:2px}.pill b{font-weight:inherit}.pill small{font-size:12px;font-weight:400;color:var(--mut)}
+.acccard{background:var(--card);border-radius:var(--r);box-shadow:var(--sh),inset 0 0 0 1px var(--line);padding:12px 14px;margin:0 0 14px}
+.help{box-shadow:inset 0 0 0 1px var(--line2);background:var(--card);color:var(--ink2)}
+/* 사용법 */
+.gill{background:var(--bg);border-radius:var(--r2);padding:12px}
+.gi{display:grid;gap:10px}.g0{grid-template-columns:repeat(3,minmax(0,1fr))}.g0 .tone .strip{height:64px}.g0 .tone.on{box-shadow:inset 0 0 0 2px var(--pri)}
+.g1{grid-template-columns:64px minmax(0,1fr);align-items:center}.g1 .dl{gap:6px}
+.g2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}.gsl{display:grid;gap:6px}.g2 .slot{background:var(--card);cursor:default}.g2 .slot.on{background:var(--pri-bg)}
+.gch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.gch i{aspect-ratio:1;border-radius:10px;box-shadow:inset 0 0 0 1px var(--sw-bd)}.gch i:first-child{box-shadow:inset 0 0 0 1px var(--sw-bd),0 0 0 2px var(--bg),0 0 0 4px var(--pri)}
+.g3 .bands{aspect-ratio:auto;height:84px;border-radius:12px;overflow:hidden}.gb{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gb .btn{cursor:default}
+.gtx b{display:block;font-size:18px;margin-top:14px}.gtx p{margin:4px 0 0;font-size:14px;color:var(--ink2)}
+.gnav{display:flex;align-items:center;gap:8px;margin-top:16px}.gdots{flex:1;display:flex;gap:6px}.gdots i{width:8px;height:8px;border-radius:999px;background:var(--line2)}.gdots i.on{background:var(--pri);width:20px}
+/* 내 얼굴 */
+.ftop{display:flex;align-items:center;gap:12px;margin:4px 0 14px}.fprev{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 auto;box-shadow:inset 0 0 0 1px var(--sw-bd);background:var(--bg);display:grid;place-items:center;color:var(--mut)}
+.priv{flex:1;margin:0;font-size:14px;color:var(--ink2);display:flex;gap:6px;align-items:flex-start}.priv .ic{width:18px;height:18px;margin-top:2px;color:var(--best)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}.facts label{cursor:pointer}
+.crop{position:relative;width:100%;max-width:320px;margin:0 auto;aspect-ratio:1;border-radius:var(--r);overflow:hidden;touch-action:none;background:var(--bg)}
+.crop canvas{width:100%;height:100%;display:block;cursor:grab}
+.crop .ring{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 0 46.5%,rgba(9,9,11,.55) 47%)}
+.zoom{display:flex;align-items:center;gap:10px;max-width:320px;margin:10px auto 0;min-height:44px;color:var(--mut)}.zoom input{flex:1;accent-color:var(--pri);min-height:44px}
+#cropBox .note{text-align:center;margin:0 0 12px}
+.drapes{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;touch-action:pan-y;user-select:none;-webkit-user-select:none}.drapes.two{grid-template-columns:1fr 1fr}
+.drape{position:relative;display:block;width:100%;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;box-shadow:inset 0 0 0 1px var(--sw-bd);transition:background .25s}
+.drape img{position:absolute;left:17%;top:8%;width:66%;aspect-ratio:1;border-radius:50%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.drape .dn{position:absolute;left:10px;bottom:10px;font-size:12px;font-weight:700;color:#18181B;background:rgba(255,255,255,.9);padding:4px 10px;border-radius:999px}
+.drapes.two .drape.on{box-shadow:inset 0 0 0 3px var(--pri)}
+.drapesheet .note{text-align:center}
+.dchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:3px 3px 6px;margin:0 -3px}.dchips::-webkit-scrollbar{display:none}
+.dc{flex:0 0 44px;width:44px;height:44px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--sw-bd)}.dc[aria-pressed=true]{box-shadow:inset 0 0 0 1px var(--sw-bd),0 0 0 2px var(--card),0 0 0 4px var(--pri)}
+@media (min-width:860px){.sheet.guide{width:480px}.sheet.drapesheet{width:440px}}
+.tchip[aria-pressed=true]{background:var(--pri-bg);color:var(--best);box-shadow:inset 0 0 0 1px var(--pri)}.tchip .ic{width:18px;height:18px}
 /* 하단 탭 */
 nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom)}
 nav.tabs button{min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;font-weight:600;color:var(--mut)}
@@ -170,6 +216,7 @@ nav.tabs svg{width:24px;height:24px}
 @media (min-width:860px){nav.tabs{left:50%;right:auto;bottom:16px;transform:translateX(-50%);width:400px;border-radius:999px;border:0;box-shadow:0 6px 20px rgba(9,9,11,.10),inset 0 0 0 1px var(--line);overflow:hidden}}
 .toast{position:fixed;pointer-events:none;top:calc(70px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;animation:fade .2s;white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
 .ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+[hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
 </head>
@@ -189,8 +236,9 @@ var TABS = [['outfit', '코디', 'outfit'], ['plates', '배색', 'plates'], ['co
 // 저장값 검사: 망가진 값이 있어도 앱이 비지 않게 (색 번호는 숫자 + 실제 있는 색만)
 function ok(i) { return typeof i === 'number' && C[i] !== undefined; }
 function cleanOutfit(o) { var r = {}; if (o && typeof o === 'object' && !Array.isArray(o)) SLOTS.forEach(function (s) { if (Object.prototype.hasOwnProperty.call(o, s[0]) && ok(o[s[0]])) r[s[0]] = o[s[0]]; }); return r; }
-var S = { tab: store.get('tab', 'outfit'), tone: store.get('tone', ''), lens: store.get('lens', true), size: 0, fam: -1, mineP: store.get('mineP', 0), favs: store.get('favs', []), outfit: cleanOutfit(store.get('outfit', {})), looks: store.get('looks', []) };
-if (!TABS.some(function (t) { return t[0] === S.tab; })) S.tab = 'outfit';
+var S = { tab: 'outfit', tone: store.get('tone', ''), lens: store.get('lens', true), size: 0, fam: -1, mineP: store.get('mineP', 0), favs: store.get('favs', []), outfit: cleanOutfit(store.get('outfit', {})), looks: store.get('looks', []) };
+S.face = store.get('face', ''); if (!/^data:image\/(jpeg|png|webp);base64,/.test(S.face)) S.face = '';   // 내 얼굴 사진: 이 기기에만 저장
+S.doff = store.get('doff', { d: 0, k: 0 }); if (typeof S.doff.d !== 'number' || !(S.doff.k >= 0 && S.doff.k < 1e4 && S.doff.k % 1 === 0)) S.doff = { d: 0, k: 0 };
 if ([0, 1, 2].indexOf(S.mineP) < 0) S.mineP = 0;
 S.favs = S.favs.filter(function (no, k, a) { return typeof no === 'number' && byNo[no] && a.indexOf(no) === k; });
 S.looks = S.looks.filter(function (l) { return l && typeof l === 'object' && typeof l.name === 'string' && l.o && typeof l.o === 'object' && !Array.isArray(l.o) && Object.keys(l.o).length && Object.keys(l.o).every(function (k) { return SLOTS.some(function (s) { return s[0] === k; }) && ok(l.o[k]); }); });
@@ -198,7 +246,7 @@ S.looks = S.looks.filter(function (l) { return l && typeof l === 'object' && typ
 if (!FIT.TONES.some(function (t) { return t.id === S.tone; })) { S.tone = ''; try { if (localStorage.getItem('cb.v2') == null && (localStorage.getItem('cb.favs') != null || localStorage.getItem('cb.looks') != null)) { S.tone = 'sum'; store.set('tone', 'sum'); } } catch (e) {} }
 store.set('v2', 1);
 function tone() { return FIT.TONES.filter(function (t) { return t.id === (S.tone || 'sum'); })[0]; }
-function applyTone() { C.forEach(function (c) { var f = FIT.fit(c.lab, tone().id); c.s = f.score; c.gr = f.grade; c.why = f.why; }); }
+function applyTone() { S.dl = null; C.forEach(function (c) { var f = FIT.fit(c.lab, tone().id); c.s = f.score; c.gr = f.grade; c.why = f.why; }); }
 function toneSw(id) { var t = FIT.TONES.filter(function (x) { return x.id === id; })[0], pick = []; C.map(function (c) { return { c: c, s: FIT.fit(c.lab, t.id).score }; }).sort(function (a, b) { return b.s - a.s; }).forEach(function (x) { if (pick.length < 5 && pick.every(function (p) { return Math.hypot(p.lab[0] - x.c.lab[0], p.lab[1] - x.c.lab[1], p.lab[2] - x.c.lab[2]) > 28; })) pick.push(x.c); }); return pick; }   // 톤 대표색 5개: 점수 높은 순, 서로 다른 색만
 applyTone();
 var FAMS = ['분홍·빨강', '노랑·갈색', '초록', '파랑·청록', '보라', '무채색'];
@@ -212,7 +260,13 @@ var I = {
   x: '<path d="M18 6 6 18M6 6l12 12"/>', star: '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
   camera: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/>',
   alert: '<path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4M12 17h.01"/>',
-  trash: '<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>', plus: '<path d="M12 5v14M5 12h14"/>', right: '<path d="m9 18 6-6-6-6"/>', chev: '<path d="m6 9 6 6 6-6"/>', check: '<path d="M20 6 9 17l-5-5"/>', reset: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'
+  trash: '<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>', plus: '<path d="M12 5v14M5 12h14"/>', minus: '<path d="M5 12h14"/>',
+  refresh: '<path d="M3 12a9 9 0 0 1 9-9 9.8 9.8 0 0 1 6.7 2.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.8 9.8 0 0 1-6.7-2.7L3 16"/><path d="M8 16H3v5"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>', lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/>',
+  help: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>', columns: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18"/>',
+  glasses: '<circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M14 15a2 2 0 0 0-4 0"/><path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"/><path d="M21.5 13 19 7c-.7-1.3-1.5-2-3-2"/>',
+  spark: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.3 6.3l2.5 2.5M15.2 15.2l2.5 2.5M6.3 17.7l2.5-2.5M15.2 8.8l2.5-2.5"/>', right: '<path d="m9 18 6-6-6-6"/>', chev: '<path d="m6 9 6 6 6-6"/>', check: '<path d="M20 6 9 17l-5-5"/>', reset: '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'
 };
 function ic(n, cls) { return '<svg class="ic ' + (cls || '') + '" viewBox="0 0 24 24" aria-hidden="true">' + I[n] + '</svg>'; }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -278,20 +332,92 @@ function nearestSlotsCombos() {
     .sort(function (a, b) { return b.m - a.m || comboFit(b.p).score - comboFit(a.p).score; });
   return { uniq: uniq, list: list.slice(0, 12) };
 }
-function figure(empty) {
-  var f = function (k) { var i = S.outfit[k]; return i == null ? (empty && k === 'top' ? 'var(--pri-bg)' : 'none') : C[i].hex; }, st0 = 'stroke="rgba(0,0,0,.18)" stroke-width="1"', dash = 'stroke="var(--mut)" stroke-width="1.2" stroke-dasharray="3 3"', st = function (k) { return S.outfit[k] == null ? (empty && k === 'top' ? 'stroke="var(--pri)" stroke-width="1.5"' : dash) : st0; };
-  return '<svg viewBox="0 0 150 300" role="img" aria-label="코디 미리보기">' +
-    '<circle cx="75" cy="28" r="17" fill="var(--line2)" ' + st0 + '/><rect x="68" y="42" width="14" height="14" rx="4" fill="var(--line2)"/>' +
-    '<path class="pt" data-act="slot" data-k="outer" d="M38 70 Q40 58 56 54 L94 54 Q110 58 112 70 L124 150 L108 154 L104 186 L46 186 L42 154 L26 150 Z" fill="' + f('outer') + '" ' + st('outer') + '/>' +
-    '<path class="pt" data-act="slot" data-k="top" d="M58 58 L92 58 L98 120 L96 160 L54 160 L52 120 Z" fill="' + f('top') + '" ' + st('top') + '/>' +
-    '<path class="pt" data-act="slot" data-k="scarf" d="M56 50 Q75 64 94 50 L96 60 Q75 76 54 60 Z M84 62 L92 98 L82 100 L76 66 Z" fill="' + f('scarf') + '" ' + st('scarf') + '/>' +
-    '<path class="pt" data-act="slot" data-k="bottom" d="M52 160 L98 160 L102 262 L82 262 L75 196 L68 262 L48 262 Z" fill="' + f('bottom') + '" ' + st('bottom') + '/>' +
-    '<path class="pt" data-act="slot" data-k="shoes" d="M44 262 L70 262 L70 276 L40 276 Q40 266 44 262 Z M80 262 L106 262 Q110 266 110 276 L80 276 Z" fill="' + f('shoes') + '" ' + st('shoes') + '/>' +
-    '<path d="M112 140 Q119 116 126 140" fill="none" stroke="' + (S.outfit.bag == null ? 'var(--mut)' : C[S.outfit.bag].hex) + '" stroke-width="3" stroke-linecap="round"/><path class="pt" data-act="slot" data-k="bag" d="M106 140 L134 140 L138 178 L102 178 Z" fill="' + f('bag') + '" ' + st('bag') + '/></svg>';
+function figure(empty, id, o) {
+  o = o || S.outfit; id = id || 's';
+  var f = function (k) { var i = o[k]; return i == null ? (empty && k === 'top' ? 'var(--pri-bg)' : 'none') : C[i].hex; }, st0 = 'stroke="rgba(0,0,0,.18)" stroke-width="1"', dash = 'stroke="var(--mut)" stroke-width="1.2" stroke-dasharray="3 3"', st = function (k) { return o[k] == null ? (empty && k === 'top' ? 'stroke="var(--pri)" stroke-width="1.5"' : dash) : st0; };
+  var act = id === 's' ? function (k) { return 'class="pt" data-act="slot" data-k="' + k + '" '; } : function () { return ''; };
+  var head = S.face ? '<clipPath id="fh-' + id + '"><circle cx="75" cy="28" r="18"/></clipPath><image href="' + S.face + '" x="57" y="10" width="36" height="36" clip-path="url(#fh-' + id + ')" preserveAspectRatio="xMidYMid slice"/><circle cx="75" cy="28" r="18" fill="none" ' + st0 + '/>' : '<circle cx="75" cy="28" r="17" fill="var(--line2)" ' + st0 + '/>';
+  return '<svg viewBox="0 0 150 300" role="img" aria-label="코디 미리보기">' + head + '<rect x="68" y="44" width="14" height="12" rx="4" fill="var(--line2)"/>' +
+    '<path ' + act('outer') + 'd="M38 70 Q40 58 56 54 L94 54 Q110 58 112 70 L124 150 L108 154 L104 186 L46 186 L42 154 L26 150 Z" fill="' + f('outer') + '" ' + st('outer') + '/>' +
+    '<path ' + act('top') + 'd="M58 58 L92 58 L98 120 L96 160 L54 160 L52 120 Z" fill="' + f('top') + '" ' + st('top') + '/>' +
+    '<path ' + act('scarf') + 'd="M56 50 Q75 64 94 50 L96 60 Q75 76 54 60 Z M84 62 L92 98 L82 100 L76 66 Z" fill="' + f('scarf') + '" ' + st('scarf') + '/>' +
+    '<path ' + act('bottom') + 'd="M52 160 L98 160 L102 262 L82 262 L75 196 L68 262 L48 262 Z" fill="' + f('bottom') + '" ' + st('bottom') + '/>' +
+    '<path ' + act('shoes') + 'd="M44 262 L70 262 L70 276 L40 276 Q40 266 44 262 Z M80 262 L106 262 Q110 266 110 276 L80 276 Z" fill="' + f('shoes') + '" ' + st('shoes') + '/>' +
+    '<path d="M112 140 Q119 116 126 140" fill="none" stroke="' + (o.bag == null ? 'var(--mut)' : C[o.bag].hex) + '" stroke-width="3" stroke-linecap="round"/><path ' + act('bag') + 'd="M106 140 L134 140 L138 178 L102 178 Z" fill="' + f('bag') + '" ' + st('bag') + '/></svg>';
+}
+// ---------- 오늘 뭐 입지 ----------
+function dayNo(d) { d = d || new Date(); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); }
+function chroma(i) { var l = C[i].lab; return Math.hypot(l[1], l[2]); }
+// 배색 하나 → 옷: 톤과 먼 색(최대 1개)은 가방, 상의 = 가장 잘 맞는 색, 하의 = 가장 차분한 색, 남는 진한 색 = 가방 포인트, 4색이면 나머지는 어두우면 아우터·밝으면 머플러, 신발 = 가장 어두운 색
+function dress(p) {
+  var cs = p.c.slice(), o = {}, out = function (i) { cs.splice(cs.indexOf(i), 1); return i; };
+  var bad = cs.filter(function (i) { return !good(i); })[0];
+  if (bad != null) o.bag = out(bad);
+  o.top = out(cs.slice().sort(function (a, b) { return C[b].s - C[a].s; })[0]);
+  o.bottom = out(cs.slice().sort(function (a, b) { return chroma(a) - chroma(b); })[0]);
+  if (o.bag == null && cs.length) o.bag = out(cs.slice().sort(function (a, b) { return chroma(b) - chroma(a); })[0]);
+  if (cs.length) { var t = out(cs[0]); o[C[t].lab[0] < C[o.top].lab[0] ? 'outer' : 'scarf'] = t; }
+  o.shoes = p.c.slice().sort(function (a, b) { return C[a].lab[0] - C[b].lab[0]; })[0];
+  return o;
+}
+function reason(o) {
+  var a = [C[o.top].gr === 'best' ? '상의는 내 톤 대표 색' : '상의는 내 톤에 맞는 색'];
+  if (o.bag != null) a.push(!good(o.bag) ? '톤과 먼 색은 가방으로' : '가방으로 포인트');
+  else a.push('하의는 차분하게');
+  return a.join(', ');
+}
+// 후보 = 3색 이상 · 톤과 먼 색 1개 이하 · 대표 색 2개 이상. 톤마다 고정된 순서로 섞고 날짜마다 한 칸씩 → 목록 길이(7개 이상)만큼은 안 겹침
+function dailyList() {
+  if (S.dl) return S.dl;
+  var c = P.filter(function (p) { return p.c.length >= 3 && p.c.filter(function (i) { return !good(i); }).length <= 1 && p.c.filter(function (i) { return C[i].gr === 'best'; }).length >= 2; });
+  var m = new Date().getMonth(), cold = m >= 8 || m <= 1, avg = function (p) { return p.c.reduce(function (s, i) { return s + C[i].lab[0]; }, 0) / p.c.length; };
+  var f = c.filter(function (p) { return cold ? avg(p) <= 78 : avg(p) >= 35; });   // 가을·겨울엔 너무 연한 배색, 봄·여름엔 너무 어두운 배색을 뺌 (남는 게 10개 이상일 때만)
+  if (f.length >= 10) c = f;
+  var seed = tone().id.split('').reduce(function (h, ch) { return (h * 31 + ch.charCodeAt(0)) >>> 0; }, 7), rnd = function () { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+  c = c.slice(); for (var i = c.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)), t = c[i]; c[i] = c[j]; c[j] = t; }
+  return (S.dl = c);
+}
+function daily(k, day) { var l = dailyList(); if (!l.length) return null; var p = l[((day == null ? dayNo() : day) + (k || 0)) % l.length]; return { p: p, o: dress(p) }; }
+function dailyK() { return S.doff.d === dayNo() ? S.doff.k : 0; }
+// ---------- 액세서리 (일반적인 스타일 참고) ----------
+var MET = { gold: 'linear-gradient(135deg,#f7e7a6,#c9a24a 55%,#f1d98a)', rose: 'linear-gradient(135deg,#f6d2c4,#c98d7b 55%,#efc3b2)', silver: 'linear-gradient(135deg,#fafbfc,#a7acb3 55%,#e9ebee)', plat: 'linear-gradient(135deg,#fff,#c3c8cf 55%,#eef0f3)', gun: 'linear-gradient(135deg,#9a9ea5,#3f434a 55%,#7d8188)', ant: 'linear-gradient(135deg,#e2c98c,#8f6f2e 55%,#c7a85f)', bronze: 'linear-gradient(135deg,#e7b07a,#8c5a2b 55%,#c98b4f)' };
+var ACC = {
+  spl: ['rose', '샴페인 골드·로즈골드', '가늘고 은은하게', '#f3ead8', '아이보리 진주', '피치·연두 톤 스톤', '밝은 브라운 테'],
+  spb: ['gold', '옐로 골드', '반짝이는 광택', '#f1e3c4', '크림 진주', '코랄·터쿼이즈', '골드·브라운 테'],
+  sul: ['silver', '실버·화이트골드', '가늘고 은은하게', '#f4f5f8', '화이트 진주', '라벤더·아쿠아 톤 스톤', '투명·실버 테'],
+  sub: ['plat', '실버·플래티넘', '맑은 광택', '#f6f7fb', '화이트 진주', '푸시아·사파이어 톤', '실버·로즈 투명 테'],
+  sum: ['silver', '실버·화이트골드', '매트·브러시드', '#d9d6dc', '그레이·핑크 진주', '로즈쿼츠·자수정', '그레이·로즈브라운 테'],
+  aum: ['rose', '로즈골드·앤틱 골드', '매트·브러시드', '#e8dcc4', '샴페인 진주', '카키·호박(앰버)', '브라운·카키 테'],
+  aus: ['ant', '앤틱 골드·브론즈', '굵고 묵직하게', '#e6cf9a', '골드 진주', '호박·토파즈·가넷', '브라운·대모 테'],
+  aud: ['bronze', '앤틱 골드·브론즈', '진하고 깊게', '#b89870', '브라운 진주', '가넷·스모키 쿼츠', '다크 브라운·대모 테'],
+  wib: ['plat', '실버·플래티넘', '강한 광택', '#fafbff', '화이트 진주', '사파이어·루비·에메랄드', '블랙·실버 테'],
+  wid: ['gun', '실버·건메탈', '진한 광택', '#5b5d66', '블랙·그레이 진주', '가넷·자수정·오닉스', '블랙·버건디 테']
+};
+// 코디 색이 들어간 책 배색에서 함께 쓰인 색 → 내 톤 색 먼저 → 빈 자리(가방·신발·머플러·벨트·모자)에 하나씩
+function accPicks(o, n) {
+  var u = SLOTS.map(function (s) { return o[s[0]]; }).filter(function (v, k, a) { return v != null && a.indexOf(v) === k; }); if (!u.length) return [];
+  var cnt = {}; P.forEach(function (p) { if (p.c.some(function (i) { return u.indexOf(i) >= 0; })) p.c.forEach(function (j) { if (u.indexOf(j) < 0) cnt[j] = (cnt[j] || 0) + 1; }); });
+  var cand = Object.keys(cnt).map(Number).sort(function (a, b) { return (good(b) - good(a)) || cnt[b] - cnt[a] || C[b].s - C[a].s; });
+  var roles = [['bag', '가방'], ['shoes', '신발'], ['scarf', '머플러'], ['', '벨트'], ['', '모자']].filter(function (r) { return !r[0] || o[r[0]] == null; }), outp = [];
+  roles.forEach(function (r) { if (outp.length >= n) return; var i = cand.filter(function (j) { return (r[0] !== 'scarf' || good(j)) && !outp.some(function (x) { return x[1] === j; }); })[0]; if (i != null) outp.push([r[1], i]); });
+  return outp;
+}
+function accBlock(o, n) {
+  var A = ACC[tone().id];
+  return '<div class="acc"><h3>액세서리<span>스타일 참고</span></h3><div class="pills"><span class="pill"><i style="background:' + MET[A[0]] + '"></i><b>' + A[1] + '</b><small>' + A[2] + '</small></span>' +
+    '<span class="pill"><i style="background:radial-gradient(circle at 35% 30%,#fff,' + A[3] + ' 62%)"></i>' + A[4] + '</span>' + (n > 2 ? '<span class="pill">' + ic('spark') + A[5] + '</span>' : '') + '<span class="pill">' + ic('glasses') + A[6] + '</span>' +
+    accPicks(o, n).map(function (x) { return '<span class="pill"><i style="background:' + C[x[1]].hex + '"></i><b>' + x[0] + '</b><small>' + esc(C[x[1]].ko) + '</small></span>'; }).join('') + '</div></div>';
+}
+function dailyCard() {
+  var D = daily(dailyK()); if (!D) return '';
+  var d = new Date(), rows = SLOTS.filter(function (s) { return D.o[s[0]] != null; }).map(function (s) { var c = C[D.o[s[0]]]; return '<li><span class="sw" style="background:' + c.hex + '"></span><span class="t">' + s[3] + '<small>' + esc(c.ko) + '</small></span></li>'; }).join('');
+  return '<section class="daily" aria-labelledby="dT"><div class="dh"><h2 id="dT">오늘 뭐 입지</h2><span>' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일 · ' + esc(tone().name) + '</span></div>' +
+    '<div class="db">' + figure(false, 'd', D.o) + '<ul class="dl">' + rows + '</ul></div><div class="dside"><p class="why">' + ic('check') + reason(D.o) + '</p>' + accBlock(D.o, 2) +
+    '<div class="da"><button class="btn pri" data-act="dailyWear">이대로 입기</button><button class="btn" data-act="dailyNext">' + ic('refresh') + '다른 추천</button><button class="btn" data-act="dailySave">' + ic('saved') + '내 코디에 저장</button><button class="btn" data-act="face">' + ic('user') + '얼굴에 대 보기</button></div></div></section>';
 }
 function viewOutfit() {
   var n = SLOTS.filter(function (s) { return S.outfit[s[0]] != null; }).length;
-  var h = '<div class="fitwrap"><div class="stage">' + figure(!n) + '<div class="slots">' + SLOTS.map(function (s) {
+  var h = dailyCard() + '<div class="fitwrap"><div class="stage">' + figure(!n, 's') + '<div class="slots">' + SLOTS.map(function (s) {
     var i = S.outfit[s[0]], c = i == null ? null : C[i], bad = c && s[2] && !good(i), on = !n && s[0] === 'top';
     return '<button class="slot' + (c ? '' : ' none') + (on ? ' on' : '') + '" data-act="slot" data-k="' + s[0] + '" aria-label="' + s[1] + (c ? ', ' + esc(c.ko) : ', 비어 있음') + '"><span class="sw"' + (c ? ' style="background:' + c.hex + '"' : '') + '>' + (c ? '' : ic('plus')) + '</span><span class="t">' + s[1] + (c ? '<small>' + esc(c.ko) + '</small>' : '') + '</span>' + (bad ? ic('alert', 'wn') : c ? ic('check', 'ck') : '') + '</button>';
   }).join('') + '</div><div class="foot"><button class="btn' + (n >= 3 ? ' pri' : '') + '" data-act="saveLook">' + ic('saved') + '저장</button><button class="btn" data-act="clearLook">' + ic('reset') + '비우기</button></div></div>';
@@ -299,6 +425,7 @@ function viewOutfit() {
   var R = nearestSlotsCombos();
   h += '<div class="sugs">';
   if (faceBad.length) h += '<button class="warn" data-act="slot" data-k="' + faceBad[0][0] + '">' + ic('alert') + '<span>' + faceBad.map(function (s) { return s[3]; }).join('·') + ' 색은 내 톤과 달라요</span>' + ic('right') + '</button>';
+  if (R.uniq.length) h += '<div class="acccard">' + accBlock(S.outfit, 4) + '</div>';
   if (!R.uniq.length) h += '<button class="hint" data-act="slot" data-k="top"><span class="pl">' + ic('plus') + '</span><span>상의부터 한 칸 눌러 보세요</span></button>';
   else {
     h += '<div class="ph"><h2>어울리는 배색</h2><span>이 색과 어울려요</span></div>';
@@ -333,7 +460,7 @@ function selFor(el) {
 function refocus() { var q = S.refocus; if (!q || document.querySelector('.sheet')) return; var el = document.querySelector(q) || document.querySelector('.tonebtn'); if (el) el.focus({ preventScroll: true }); }
 function openSheet(title, body, o) {
   o = o || {}; var el = document.getElementById('sheet'), was = !!el.querySelector('.sheet');
-  if (!was) { S.opener = selFor(document.activeElement); if (!SH.pending) pushSheet(); }
+  if (!was) { S.opener = selFor(document.activeElement); S.openedAt = Date.now() - (S.lastClick || 0) < 80 ? Date.now() : 0; if (!SH.pending) pushSheet(); }
   S.locked = !!o.locked; document.getElementById('app').inert = document.getElementById('tabs').inert = true;
   el.innerHTML = '<div class="scrim"' + (o.locked ? '' : ' data-act="close"') + '></div><div class="sheet ' + (o.cls || '') + '" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="shT"><div class="sh"><div class="sht"><h2 id="shT">' + title + '</h2>' + (o.sub ? '<p>' + o.sub + '</p>' : '') + '</div>' + (o.head || '') + (o.locked ? '' : '<button class="ib" data-act="close" aria-label="닫기">' + ic('x') + '</button>') + '</div>' + body + '</div>';
   document.body.style.overflow = 'hidden'; el.querySelector('.sheet').focus();
@@ -359,6 +486,77 @@ function toneSheet() {
     }).join('') + '</div></div>';
   });
   openSheet('내 퍼스널컬러는?', h + '</div>', { cls: 'tonesheet', sub: '몰라도 괜찮아요. 가까운 계절을 고르면 돼요.', locked: !S.tone });
+}
+// ---------- 사용법 ----------
+var GUIDE = [['내 톤 고르기', '톤을 고르면 나에게 맞는 색이 먼저 나와요. 위 톤 버튼으로 언제든 바꿔요.'], ['오늘 뭐 입지', '날마다 바뀌는 추천 코디예요. 이대로 입기를 누르면 코디판에 채워져요.'], ['칸을 눌러 색 고르기', '상의·하의 칸을 누르면 내 톤 색이 먼저 보여요.'], ['입혀 보기와 저장', '어울리는 배색을 입혀 보고, 마음에 들면 저장해요.']];
+function guideIll(k) {
+  var t = tone(), best = C.filter(function (c) { return c.gr === 'best'; }).sort(function (a, b) { return b.s - a.s; }), D = daily(0) || { o: { top: best[0].i } };
+  if (k === 0) return '<div class="gi g0">' + [t.id].concat(FIT.TONES.filter(function (x) { return x.id !== t.id && x.season !== t.season; }).slice(0, 2).map(function (x) { return x.id; })).map(function (id, j) { var x = FIT.TONES.filter(function (q) { return q.id === id; })[0]; return '<span class="tone' + (j ? '' : ' on') + '"><span class="strip">' + toneSw(id).map(function (c) { return '<i style="background:' + c.hex + '"></i>'; }).join('') + '</span><span class="tn">' + x.name.split(' ').slice(1).join(' ') + '</span></span>'; }).join('') + '</div>';
+  if (k === 1) return '<div class="gi g1">' + figure(false, 'g', D.o) + '<ul class="dl">' + SLOTS.filter(function (s) { return D.o[s[0]] != null; }).map(function (s) { return '<li><span class="sw" style="background:' + C[D.o[s[0]]].hex + '"></span><span class="t">' + s[3] + '</span></li>'; }).join('') + '</ul></div>';
+  if (k === 2) return '<div class="gi g2"><div class="gsl">' + ['상의', '하의', '가방'].map(function (n, j) { return '<span class="slot' + (j ? ' none' : ' on') + '"><span class="sw">' + ic('plus') + '</span><span class="t">' + n + '</span></span>'; }).join('') + '</div><div class="gch">' + best.slice(0, 9).map(function (c) { return '<i style="background:' + c.hex + '"></i>'; }).join('') + '</div></div>';
+  var p = (D.p || P[0]);
+  return '<div class="gi g3">' + bands(p) + '<div class="gb"><span class="btn tint">입혀 보기</span><span class="btn pri">' + ic('saved') + '저장</span></div></div>';
+}
+function guideSheet(k) {
+  S.gk = k; store.set('guided', 1);
+  var last = k === GUIDE.length - 1;
+  openSheet('사용법', '<div class="gill">' + guideIll(k) + '</div><div class="gtx"><b>' + (k + 1) + '. ' + GUIDE[k][0] + '</b><p>' + GUIDE[k][1] + '</p></div>' +
+    '<div class="gnav"><span class="gdots" aria-label="' + (k + 1) + '/' + GUIDE.length + '단계">' + GUIDE.map(function (x, j) { return '<i' + (j === k ? ' class="on"' : '') + '></i>'; }).join('') + '</span><button class="btn" data-act="guideBack">' + (k ? '이전' : '건너뛰기') + '</button><button class="btn pri" data-act="guideGo">' + (last ? '시작하기' : '다음') + '</button></div>', { cls: 'guide' });
+}
+// ---------- 내 얼굴로 보기 (사진은 이 기기 저장소에만) ----------
+function faceSheet() {
+  var h = '<div class="ftop">' + (S.face ? '<img class="fprev" src="' + S.face + '" alt="내 얼굴 사진">' : '<span class="fprev">' + ic('user') + '</span>') + '<p class="priv">' + ic('lock') + '<span>사진은 이 폰에만 저장돼요. 어디에도 올리지 않아요.</span></p></div><div id="cropBox"></div>' +
+    '<div class="facts" id="faceActs"><label class="btn pri">' + ic('image') + '사진 고르기<input type="file" accept="image/*" class="sr" data-act="facefile"></label><label class="btn">' + ic('camera') + '셀카 찍기<input type="file" accept="image/*" capture="user" class="sr" data-act="facefile"></label>' +
+    (S.face ? '<button class="btn" data-act="drape">' + ic('user') + '얼굴에 대 보기</button><button class="btn" data-act="faceDel">' + ic('trash') + '사진 지우기</button>' : '') + '</div>';
+  openSheet('내 얼굴로 보기', h);
+}
+var CR = null;
+function loadPic(file) {   // 세로 사진 방향(EXIF) 반영: createImageBitmap(from-image) → 안 되면 <img>(요즘 브라우저는 방향 반영)
+  return (window.createImageBitmap ? createImageBitmap(file, { imageOrientation: 'from-image' }) : Promise.reject()).catch(function () {
+    return new Promise(function (res, rej) { var img = new Image(), u = URL.createObjectURL(file); img.onload = function () { URL.revokeObjectURL(u); res(img); }; img.onerror = function () { URL.revokeObjectURL(u); rej(); }; img.src = u; });
+  });
+}
+function onFaceFile(input) {
+  var file = input.files && input.files[0]; input.value = ''; if (!file) return;
+  loadPic(file).then(function (img) {
+    var w = img.width || img.naturalWidth, h = img.height || img.naturalHeight; if (!w || !h) throw 0;
+    var k = Math.min(1, 1200 / Math.max(w, h)), wc = document.createElement('canvas'); wc.width = Math.round(w * k); wc.height = Math.round(h * k); wc.getContext('2d').drawImage(img, 0, 0, wc.width, wc.height); if (img.close) img.close();
+    CR = { img: wc, z: 1, x: 0, y: 0 };
+    var box = document.getElementById('cropBox'); if (!box) return;
+    document.getElementById('faceActs').hidden = true;
+    box.innerHTML = '<div class="crop"><canvas width="600" height="600" aria-label="얼굴을 원 안에 맞추세요"></canvas><span class="ring"></span></div><label class="zoom">' + ic('minus') + '<input type="range" min="1" max="4" step="0.01" value="1" data-act="zoom" aria-label="확대">' + ic('plus') + '</label><p class="note">끌어서 얼굴을 원 안에 맞추세요</p><div class="facts"><button class="btn" data-act="faceRe">다시 고르기</button><button class="btn pri" data-act="faceSave">저장</button></div>';
+    var cv = box.querySelector('canvas'), last = null;
+    cv.addEventListener('pointerdown', function (e) { last = [e.clientX, e.clientY]; cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener('pointermove', function (e) { if (!last) return; var r = 600 / cv.getBoundingClientRect().width; CR.x += (e.clientX - last[0]) * r; CR.y += (e.clientY - last[1]) * r; last = [e.clientX, e.clientY]; drawCrop(cv, 600); });
+    cv.addEventListener('pointerup', function () { last = null; });
+    drawCrop(cv, 600);
+  }).catch(function () { toast('이 사진은 열 수 없어요. JPG나 PNG로 골라 주세요'); });
+}
+function drawCrop(cv, N) {
+  var im = CR.img, s = Math.max(600 / im.width, 600 / im.height) * CR.z, dw = im.width * s, dh = im.height * s, mx = (dw - 600) / 2, my = (dh - 600) / 2;
+  CR.x = Math.max(-mx, Math.min(mx, CR.x)); CR.y = Math.max(-my, Math.min(my, CR.y));
+  var ctx = cv.getContext('2d'), k = N / 600; ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, N, N);
+  ctx.drawImage(im, (300 - dw / 2 + CR.x) * k, (300 - dh / 2 + CR.y) * k, dw * k, dh * k);
+}
+function saveFace() {
+  if (!CR) return; var cv = document.createElement('canvas'); cv.width = cv.height = 320; drawCrop(cv, 320);
+  var q = 0.86, url = cv.toDataURL('image/jpeg', q); while (url.length > 400000 && q > 0.3) { q -= 0.12; url = cv.toDataURL('image/jpeg', q); }   // 300KB 이하
+  S.face = url; CR = null;
+  try { localStorage.setItem('cb.face', JSON.stringify(url)); toast('이 폰에 저장했어요'); } catch (e) { toast('저장 공간이 부족해 이번에만 보여요'); }
+  S.keep = true; render(); drapeSheet();
+}
+function drapeList() { var u = SLOTS.map(function (s) { return S.outfit[s[0]]; }).filter(function (v) { return v != null; }); var b = C.filter(function (c) { return c.gr === 'best'; }).sort(function (a, b) { return b.s - a.s; }).map(function (c) { return c.i; }); return { mine: u.filter(function (v, k) { return u.indexOf(v) === k; }), best: b, all: u.concat(b).filter(function (v, k, a) { return a.indexOf(v) === k; }) }; }
+function drapeBox(k) { var i = k ? S.dr.b : S.dr.a, c = C[i]; return '<button class="drape' + (S.dr.two && S.dr.side === k ? ' on' : '') + '" data-act="drapeSide" data-v="' + k + '" style="background:' + c.hex + '" aria-label="' + esc(c.ko) + ' 대 보기' + (S.dr.two ? ', ' + (k ? '오른쪽' : '왼쪽') : '') + '"><img src="' + S.face + '" alt=""><span class="dn">' + esc(c.ko) + '</span></button>'; }
+function drapeSheet() {
+  if (!S.face) { faceSheet(); return; }
+  var L = drapeList(); if (!S.dr || L.all.indexOf(S.dr.a) < 0) S.dr = { a: L.all[0], b: L.all[1] != null ? L.all[1] : L.all[0], two: S.dr ? S.dr.two : false, side: 0 };
+  var cur = S.dr.side ? S.dr.b : S.dr.a, chips = function (arr) { return '<div class="dchips">' + arr.map(function (i) { return '<button class="dc" data-act="drapeSet" data-i="' + i + '" style="background:' + C[i].hex + '" aria-label="' + esc(C[i].ko) + '" aria-pressed="' + (i === cur) + '"></button>'; }).join('') + '</div>'; };
+  var h = '<div class="drapes' + (S.dr.two ? ' two' : '') + '">' + drapeBox(0) + (S.dr.two ? drapeBox(1) : '') + '</div><p class="note">옆으로 밀면 다음 색 · 얼굴빛이 맑아 보이는 색이 잘 맞아요</p>' +
+    (L.mine.length ? '<h3 class="h3">내 코디 색</h3>' + chips(L.mine) : '') + '<h3 class="h3">' + esc(tone().name) + ' 대표 색</h3>' + chips(L.best);
+  openSheet('얼굴에 대 보기', h, { cls: 'drapesheet', head: '<button class="tchip" data-act="drapeTwo" aria-pressed="' + S.dr.two + '">' + ic('columns') + '두 색 비교</button><button class="ib cam" data-act="face" aria-label="사진 바꾸기·지우기">' + ic('user') + '</button>' });
+  var el = document.querySelector('.drapes'), x0 = null;
+  el.addEventListener('pointerdown', function (e) { x0 = e.clientX; S.swiped = false; });
+  el.addEventListener('pointerup', function (e) { if (x0 == null) return; var dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { S.swiped = true; var all = drapeList().all, key = S.dr.side ? 'b' : 'a', j = all.indexOf(S.dr[key]); S.dr[key] = all[(j + (dx < 0 ? 1 : -1) + all.length) % all.length]; drapeSheet(); } });
 }
 function comboSheet(no) {
   var p = byNo[no], f = comboFit(p);
@@ -437,18 +635,32 @@ function wear(no) {
 function render() {
   var app = document.getElementById('app'), y = window.scrollY, t = S.tone ? tone() : null, lensOn = S.tab === 'plates' || S.tab === 'colors';
   document.body.classList.toggle('lens-on', S.lens && lensOn);
-  app.innerHTML = '<header class="top"><h1>배색사전</h1><button class="tonebtn' + (t ? '' : ' empty') + '" data-act="tone" aria-label="내 톤 ' + (t ? esc(t.name) + ', 바꾸기' : '고르기') + '">' + (t ? toneDots(t.id, 3) + '<span>' + esc(t.name) + '</span>' : '<span>내 톤 고르기</span>') + ic('chev') + '</button></header>' +
+  app.innerHTML = '<header class="top"><h1>배색사전</h1><button class="tonebtn' + (t ? '' : ' empty') + '" data-act="tone" aria-label="내 톤 ' + (t ? esc(t.name) + ', 바꾸기' : '고르기') + '">' + (t ? toneDots(t.id, 3) + '<span>' + esc(t.name) + '</span>' : '<span>내 톤 고르기</span>') + ic('chev') + '</button><button class="ib help" data-act="help" aria-label="사용법">' + ic('help') + '</button></header>' +
     (!t ? '' : S.tab === 'plates' ? viewPlates() : S.tab === 'colors' ? viewColors() : S.tab === 'outfit' ? viewOutfit() : viewSaved());   // 톤을 고르기 전엔 색 화면을 그리지 않음
   document.getElementById('tabs').innerHTML = TABS.map(function (t) { return '<button data-act="tab" data-v="' + t[0] + '"' + (S.tab === t[0] ? ' aria-current="page"' : '') + '>' + ic(t[2]) + t[1] + '</button>'; }).join('');
   if (S.keep) window.scrollTo(0, y); S.keep = false;
   refocus();
 }
 var ACT = {
-  tab: function (el) { if (document.querySelector('.sheet')) closeSheet(); S.tab = el.dataset.v; store.set('tab', S.tab); render(); window.scrollTo(0, 0); },
+  tab: function (el) { if (document.querySelector('.sheet')) closeSheet(); S.tab = el.dataset.v; render(); window.scrollTo(0, 0); },
   tone: function () { toneSheet(); },
+  help: function () { guideSheet(0); },
+  guideGo: function () { if (S.gk >= GUIDE.length - 1) closeSheet(); else guideSheet(S.gk + 1); },
+  guideBack: function () { if (S.gk > 0) guideSheet(S.gk - 1); else closeSheet(); },
+  dailyWear: function () { var D = daily(dailyK()); if (!D) return; S.outfit = cleanOutfit(D.o); S.lastWear = null; store.set('outfit', S.outfit); S.keep = true; render(); toast('오늘 추천을 입었어요'); },
+  dailyNext: function () { S.doff = { d: dayNo(), k: dailyK() + 1 }; store.set('doff', S.doff); S.keep = true; render(); },
+  dailySave: function () { var D = daily(dailyK()); if (!D) return; var d = new Date(); S.looks.unshift({ name: (d.getMonth() + 1) + '월 ' + d.getDate() + '일 오늘 추천', o: cleanOutfit(D.o) }); S.looks = S.looks.slice(0, 60); store.set('looks', S.looks); toast('내 코디에 저장했어요'); },
+  face: function () { if (document.querySelector('.drapesheet') || !S.face) faceSheet(); else drapeSheet(); },
+  drape: function () { drapeSheet(); },
+  faceRe: function () { CR = null; faceSheet(); },
+  faceSave: function () { saveFace(); },
+  faceDel: function () { S.face = ''; S.dr = null; try { localStorage.removeItem('cb.face'); } catch (e) {} S.keep = true; render(); faceSheet(); toast('사진을 지웠어요'); },
+  drapeSet: function (el) { var i = +el.dataset.i; if (!ok(i)) return; S.dr[S.dr.side ? 'b' : 'a'] = i; drapeSheet(); },
+  drapeSide: function (el) { if (S.swiped) { S.swiped = false; return; } if (!S.dr.two) return; S.dr.side = +el.dataset.v; drapeSheet(); },
+  drapeTwo: function () { S.dr.two = !S.dr.two; S.dr.side = S.dr.two ? 1 : 0; drapeSheet(); },
   setTone: function (el) {
     var first = !S.tone; S.tone = el.dataset.v; store.set('tone', S.tone); applyTone(); S.keep = true;
-    if (first) { S.tab = 'outfit'; store.set('tab', S.tab); render(); pickerSheet('top'); return; }   // 처음엔 바로 상의 색 고르기로
+    if (first) { S.tab = 'outfit'; render(); guideSheet(0); return; }   // 처음엔 사용법 4단계(건너뛸 수 있음)
     closeSheet(); render(); toast(tone().name + '으로 바꿨어요');
   },
   lens: function () { S.lens = !S.lens; store.set('lens', S.lens); S.keep = true; render(); },
@@ -468,8 +680,8 @@ var ACT = {
   loadLook: function (el) { var l = S.looks[+el.dataset.v]; if (!l) return; S.outfit = cleanOutfit(l.o); S.lastWear = null; store.set('outfit', S.outfit); S.tab = 'outfit'; store.set('tab', S.tab); render(); toast('코디를 불러왔어요'); },
   delLook: function (el) { S.looks.splice(+el.dataset.v, 1); store.set('looks', S.looks); S.keep = true; render(); toast('코디를 지웠어요'); }
 };
-var GUARD = { quickTop: 1, wear: 1, setSlot: 1, setTone: 1, toSlot: 1 }, lastTap = 0;   // 300ms 안의 두 번째 탭은 무시 (두 번 눌러 엉뚱한 칸이 바뀌는 것 방지)
-document.addEventListener('click', function (e) { var el = e.target.closest('[data-act]'); if (!el || el.tagName === 'INPUT') return; var a = el.dataset.act, f = ACT[a]; if (!f) return; e.preventDefault(); if (GUARD[a]) { var now = Date.now(); if (now - lastTap < 300) return; lastTap = now; } f(el); });
+var GUARD = { wear: 1, setSlot: 1, setTone: 1, toSlot: 1, dailyWear: 1, dailyNext: 1, dailySave: 1, faceSave: 1, guideGo: 1, guideBack: 1 }, lastTap = 0;   // 300ms 안의 두 번째 탭은 무시 (두 번 눌러 엉뚱한 칸이 바뀌는 것 방지)
+document.addEventListener('click', function (e) { var el = e.target.closest('[data-act]'); if (!el || el.tagName === 'INPUT') return; var a = el.dataset.act, f = ACT[a]; if (!f) return; e.preventDefault(); if (el.closest('#sheet') && Date.now() - S.openedAt < 300) return; S.lastClick = Date.now(); if (GUARD[a]) { var now = Date.now(); if (now - lastTap < 300) return; lastTap = now; } f(el); });
 document.addEventListener('keydown', function (e) {
   var sh = document.querySelector('.sheet');
   if (sh && e.key === 'Tab') {   // 시트가 열려 있으면 Tab 이 시트 안에서만 돈다
@@ -477,9 +689,10 @@ document.addEventListener('keydown', function (e) {
     if (f.length) { var first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && (document.activeElement === last || !sh.contains(document.activeElement))) { e.preventDefault(); first.focus(); } }
   }
   if (e.key === 'Escape' && sh && !S.locked) closeSheet(); var el = e.target.closest && e.target.closest('[role=button][data-act]'); if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); if (ACT[el.dataset.act]) ACT[el.dataset.act](el); } });
-document.addEventListener('change', function (e) { if (e.target.dataset && e.target.dataset.act === 'photo') onPhoto(e.target); });
+document.addEventListener('change', function (e) { var a = e.target.dataset && e.target.dataset.act; if (a === 'photo') onPhoto(e.target); else if (a === 'facefile') onFaceFile(e.target); });
+document.addEventListener('input', function (e) { if (e.target.dataset && e.target.dataset.act === 'zoom' && CR) { CR.z = +e.target.value; drawCrop(document.querySelector('.crop canvas'), 600); } });
 render();
-if (!S.tone) toneSheet();
+if (!S.tone) toneSheet(); else if (!store.get('guided', 0)) guideSheet(0);   // 예전 사용자도 사용법은 한 번 보여 줌
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(function () {});
 </script>
 </body>
