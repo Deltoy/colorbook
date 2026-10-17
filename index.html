@@ -552,7 +552,8 @@ function drapeSheet() {
   var L = drapeList(); if (!S.dr || L.all.indexOf(S.dr.a) < 0) S.dr = { a: L.all[0], b: L.all[1] != null ? L.all[1] : L.all[0], two: S.dr ? S.dr.two : false, side: 0 };
   var cur = S.dr.side ? S.dr.b : S.dr.a, chips = function (arr) { return '<div class="dchips">' + arr.map(function (i) { return '<button class="dc" data-act="drapeSet" data-i="' + i + '" style="background:' + C[i].hex + '" aria-label="' + esc(C[i].ko) + '" aria-pressed="' + (i === cur) + '"></button>'; }).join('') + '</div>'; };
   var h = '<div class="drapes' + (S.dr.two ? ' two' : '') + '">' + drapeBox(0) + (S.dr.two ? drapeBox(1) : '') + '</div><p class="note">옆으로 밀면 다음 색 · 얼굴빛이 맑아 보이는 색이 잘 맞아요</p>' +
-    (L.mine.length ? '<h3 class="h3">내 코디 색</h3>' + chips(L.mine) : '') + '<h3 class="h3">' + esc(tone().name) + ' 대표 색</h3>' + chips(L.best);
+    (L.mine.length ? '<h3 class="h3">내 코디 색</h3>' + chips(L.mine) : '') + '<h3 class="h3">' + esc(tone().name) + ' 대표 색</h3>' + chips(L.best)
+    + '<div class="facts"><button class="btn" data-act="faceRe">' + ic('image') + '사진 바꾸기</button><button class="btn" data-act="faceDel">' + ic('trash') + '사진 지우기</button></div>';   // 1018 MJ: 머리 아이콘만으론 바꾸기·지우기를 못 찾음
   openSheet('얼굴에 대 보기', h, { cls: 'drapesheet', head: '<button class="tchip" data-act="drapeTwo" aria-pressed="' + S.dr.two + '">' + ic('columns') + '두 색 비교</button><button class="ib cam" data-act="face" aria-label="사진 바꾸기·지우기">' + ic('user') + '</button>' });
   var el = document.querySelector('.drapes'), x0 = null;
   el.addEventListener('pointerdown', function (e) { x0 = e.clientX; S.swiped = false; });
