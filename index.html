@@ -215,6 +215,7 @@ nav.tabs button[aria-current=page]{color:var(--pri)}nav.tabs button:focus-visibl
 nav.tabs svg{width:24px;height:24px}
 @media (min-width:860px){nav.tabs{left:50%;right:auto;bottom:16px;transform:translateX(-50%);width:400px;border-radius:999px;border:0;box-shadow:0 6px 20px rgba(9,9,11,.10),inset 0 0 0 1px var(--line);overflow:hidden}}
 .toast{position:fixed;pointer-events:none;top:calc(70px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;animation:fade .2s;white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
+.toast.undo{pointer-events:auto;display:flex;align-items:center;gap:10px;padding:4px 4px 4px 18px}.toast.undo span{overflow:hidden;text-overflow:ellipsis}.toast.undo button{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:999px;font-weight:800;box-shadow:inset 0 0 0 1.5px currentColor}
 .ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 [hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -273,7 +274,14 @@ function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function
 function good(i) { return C[i].gr === 'best' || C[i].gr === 'good'; }
 function comboFit(p) { var b = 0, g = 0; p.c.forEach(function (i) { if (C[i].gr === 'best') b++; else if (C[i].gr === 'good') g++; }); return { b: b, g: g, all: b + g === p.c.length, near: p.c.length > 2 && b + g >= p.c.length - 1, odd: p.c.filter(function (i) { return !good(i); }), score: p.c.reduce(function (s, i) { return s + C[i].s; }, 0) / p.c.length }; }
 function ghost(i) { return S.lens && !good(i) ? ' ghost' : ''; }
-function toast(t) { document.querySelectorAll('.toast').forEach(function (e) { e.remove(); }); var el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); el.textContent = t; document.body.appendChild(el); setTimeout(function () { el.remove(); }, 2400); }
+// undo 를 주면 '되돌리기' 버튼이 붙고 5초 동안 떠 있음 (비우기·지우기·덮어쓰기를 실수로 눌렀을 때)
+function toast(t, undo) {
+  document.querySelectorAll('.toast').forEach(function (e) { e.remove(); }); var el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status');
+  if (undo) { el.classList.add('undo'); el.innerHTML = '<span>' + esc(t) + '</span><button type="button">되돌리기</button>'; el.querySelector('button').addEventListener('click', function () { el.remove(); undo(); }); } else el.textContent = t;
+  document.body.appendChild(el); setTimeout(function () { el.remove(); }, undo ? 5000 : 2400);
+}
+function sameOutfit(a, b) { return SLOTS.every(function (s) { return a[s[0]] === b[s[0]]; }); }
+function outfitUndo() { var prev = JSON.parse(JSON.stringify(S.outfit)), w = S.lastWear; return Object.keys(prev).length ? function () { S.outfit = prev; S.lastWear = w; store.set('outfit', S.outfit); S.keep = true; render(); } : null; }   // 입던 코디가 있을 때만
 function isFav(no) { return S.favs.indexOf(no) >= 0; }
 
 // ---------- 공통 조각 ----------
@@ -459,7 +467,7 @@ function selFor(el) {
 }
 function refocus() { var q = S.refocus; if (!q || document.querySelector('.sheet')) return; var el = document.querySelector(q) || document.querySelector('.tonebtn'); if (el) el.focus({ preventScroll: true }); }
 function openSheet(title, body, o) {
-  o = o || {}; var el = document.getElementById('sheet'), was = !!el.querySelector('.sheet');
+  o = o || {}; dropUndo(); var el = document.getElementById('sheet'), was = !!el.querySelector('.sheet');
   if (!was) { S.opener = selFor(document.activeElement); S.openedAt = Date.now() - (S.lastClick || 0) < 80 ? Date.now() : 0; if (!SH.pending) pushSheet(); }
   S.locked = !!o.locked; document.getElementById('app').inert = document.getElementById('tabs').inert = true;
   el.innerHTML = '<div class="scrim"' + (o.locked ? '' : ' data-act="close"') + '></div><div class="sheet ' + (o.cls || '') + '" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="shT"><div class="sh"><div class="sht"><h2 id="shT">' + title + '</h2>' + (o.sub ? '<p>' + o.sub + '</p>' : '') + '</div>' + (o.head || '') + (o.locked ? '' : '<button class="ib" data-act="close" aria-label="닫기">' + ic('x') + '</button>') + '</div>' + body + '</div>';
@@ -580,8 +588,8 @@ function pickerSheet(k) {
   var grid = function (cs) { return '<div class="chips pk">' + cs.map(function (c) { return colorChip(c, 'setSlot', true); }).join('') + '</div>'; };
   var sort = function (a, b) { return b.s - a.s; }, best = C.filter(function (c) { return c.gr === 'best'; }).sort(sort), more = C.filter(function (c) { return shown.indexOf(c.gr) >= 0; }).sort(sort);
   var rest = C.filter(function (c) { return c.gr !== 'best' && shown.indexOf(c.gr) < 0; }).sort(function (a, b) { return a.g - b.g || b.s - a.s; });
-  var head = '<button class="tchip" data-act="tone" aria-label="내 톤 ' + esc(t.name) + ', 바꾸기">' + toneDots(t.id, 2) + esc(t.name) + '</button><label class="ib cam" aria-label="사진에서 색 찾기">' + ic('camera') + '<input type="file" accept="image/*" class="sr" data-act="photo"></label>';
-  var h = '<div id="photoBox"></div><h3 class="h3">내 톤 대표 색 <span class="num">' + best.length + '</span></h3>' + grid(best);
+  var head = '<button class="tchip" data-act="tone" aria-label="내 톤 ' + esc(t.name) + ', 바꾸기">' + toneDots(t.id, 2) + esc(t.name) + '</button>';
+  var h = '<label class="btn wide" style="margin-top:4px">' + ic('camera') + '옷 사진에서 색 찾기<input type="file" accept="image/*" class="sr" data-act="photo"></label><div id="photoBox"></div><h3 class="h3">내 톤 대표 색 <span class="num">' + best.length + '</span></h3>' + grid(best);   // 카메라 아이콘만으론 못 찾음 → 글자 버튼
   if (more.length) h += '<h3 class="h3">이 색도 좋아요 <span class="num">' + more.length + '</span></h3>' + grid(more);
   h += '<details class="more"><summary class="btn">다른 색도 보기 <span class="num">' + rest.length + '</span>' + ic('chev') + '</summary>' + grid(rest) + '</details>';
   if (S.outfit[k] != null) h += '<button class="btn wide" data-act="setSlot" data-i="-1">' + ic('reset') + '이 칸 비우기</button>';
@@ -633,8 +641,9 @@ function wear(no) {
 }
 
 // ---------- 렌더 ----------
+function dropUndo() { document.querySelectorAll('.toast.undo').forEach(function (e) { e.remove(); }); }   // 화면이 바뀐 뒤 되돌리면 그 사이 바꾼 것까지 사라지므로
 function render() {
-  var app = document.getElementById('app'), y = window.scrollY, t = S.tone ? tone() : null, lensOn = S.tab === 'plates' || S.tab === 'colors';
+  dropUndo(); var app = document.getElementById('app'), y = window.scrollY, t = S.tone ? tone() : null, lensOn = S.tab === 'plates' || S.tab === 'colors';
   document.body.classList.toggle('lens-on', S.lens && lensOn);
   app.innerHTML = '<header class="top"><h1>배색사전</h1><button class="tonebtn' + (t ? '' : ' empty') + '" data-act="tone" aria-label="내 톤 ' + (t ? esc(t.name) + ', 바꾸기' : '고르기') + '">' + (t ? toneDots(t.id, 3) + '<span>' + esc(t.name) + '</span>' : '<span>내 톤 고르기</span>') + ic('chev') + '</button><button class="ib help" data-act="help" aria-label="사용법">' + ic('help') + '</button></header>' +
     (!t ? '' : S.tab === 'plates' ? viewPlates() : S.tab === 'colors' ? viewColors() : S.tab === 'outfit' ? viewOutfit() : viewSaved());   // 톤을 고르기 전엔 색 화면을 그리지 않음
@@ -648,14 +657,17 @@ var ACT = {
   help: function () { guideSheet(0); },
   guideGo: function () { if (S.gk >= GUIDE.length - 1) closeSheet(); else guideSheet(S.gk + 1); },
   guideBack: function () { if (S.gk > 0) guideSheet(S.gk - 1); else closeSheet(); },
-  dailyWear: function () { var D = daily(dailyK()); if (!D) return; S.outfit = cleanOutfit(D.o); S.lastWear = null; store.set('outfit', S.outfit); S.keep = true; render(); toast('오늘 추천을 입었어요'); },
+  dailyWear: function () { var D = daily(dailyK()); if (!D) return; var u = outfitUndo(); S.outfit = cleanOutfit(D.o); S.lastWear = null; store.set('outfit', S.outfit); S.keep = true; render(); toast('오늘 추천을 입었어요', u); },
   dailyNext: function () { S.doff = { d: dayNo(), k: dailyK() + 1 }; store.set('doff', S.doff); S.keep = true; render(); },
-  dailySave: function () { var D = daily(dailyK()); if (!D) return; var d = new Date(); S.looks.unshift({ name: (d.getMonth() + 1) + '월 ' + d.getDate() + '일 오늘 추천', o: cleanOutfit(D.o) }); S.looks = S.looks.slice(0, 60); store.set('looks', S.looks); toast('내 코디에 저장했어요'); },
+  dailySave: function () { var D = daily(dailyK()); if (!D) return; if (S.looks.some(function (l) { return sameOutfit(l.o, D.o); })) { toast('이미 저장한 코디예요'); return; } var d = new Date(); S.looks.unshift({ name: (d.getMonth() + 1) + '월 ' + d.getDate() + '일 오늘 추천', o: cleanOutfit(D.o) }); S.looks = S.looks.slice(0, 60); store.set('looks', S.looks); toast('내 코디에 저장했어요'); },
   face: function () { if (document.querySelector('.drapesheet') || !S.face) faceSheet(); else drapeSheet(); },
   drape: function () { drapeSheet(); },
   faceRe: function () { CR = null; faceSheet(); },
   faceSave: function () { saveFace(); },
-  faceDel: function () { S.face = ''; S.dr = null; try { localStorage.removeItem('cb.face'); } catch (e) {} S.keep = true; render(); faceSheet(); toast('사진을 지웠어요'); },
+  faceDel: function () {
+    var old = S.face; S.face = ''; S.dr = null; try { localStorage.removeItem('cb.face'); } catch (e) {} S.keep = true; render(); faceSheet();
+    toast('사진을 지웠어요', function () { S.face = old; try { localStorage.setItem('cb.face', JSON.stringify(old)); } catch (e) {} S.keep = true; render(); if (document.querySelector('.sheet')) faceSheet(); });
+  },
   drapeSet: function (el) { var i = +el.dataset.i; if (!ok(i)) return; S.dr[S.dr.side ? 'b' : 'a'] = i; drapeSheet(); },
   drapeSide: function (el) { if (S.swiped) { S.swiped = false; return; } if (!S.dr.two) return; S.dr.side = +el.dataset.v; drapeSheet(); },
   drapeTwo: function () { S.dr.two = !S.dr.two; S.dr.side = S.dr.two ? 1 : 0; drapeSheet(); },
@@ -676,10 +688,10 @@ var ACT = {
   wear: function (el) { wear(+el.dataset.no); },
   slot: function (el) { pickerSheet(el.dataset.k); },
   setSlot: function (el) { var k = S.pickFor; if (!k) { colorSheet(+el.dataset.i); return; } var i = +el.dataset.i; if (i < 0) delete S.outfit[k]; else if (ok(i)) S.outfit[k] = i; S.lastWear = null; store.set('outfit', S.outfit); closeSheet(); S.keep = true; render(); },
-  saveLook: function () { var ks = Object.keys(S.outfit); if (!ks.length) { toast('먼저 색을 하나 이상 골라 주세요'); return; } var d = new Date(); S.looks.unshift({ name: (d.getMonth() + 1) + '월 ' + d.getDate() + '일 코디', o: JSON.parse(JSON.stringify(S.outfit)) }); S.looks = S.looks.slice(0, 60); store.set('looks', S.looks); toast('코디를 저장했어요'); },
-  clearLook: function () { S.outfit = {}; S.lastWear = null; store.set('outfit', S.outfit); S.keep = true; render(); },
-  loadLook: function (el) { var l = S.looks[+el.dataset.v]; if (!l) return; S.outfit = cleanOutfit(l.o); S.lastWear = null; store.set('outfit', S.outfit); S.tab = 'outfit'; store.set('tab', S.tab); render(); toast('코디를 불러왔어요'); },
-  delLook: function (el) { S.looks.splice(+el.dataset.v, 1); store.set('looks', S.looks); S.keep = true; render(); toast('코디를 지웠어요'); }
+  saveLook: function () { var ks = Object.keys(S.outfit); if (!ks.length) { toast('먼저 색을 하나 이상 골라 주세요'); return; } if (S.looks.some(function (l) { return sameOutfit(l.o, S.outfit); })) { toast('이미 저장한 코디예요'); return; } var d = new Date(); S.looks.unshift({ name: (d.getMonth() + 1) + '월 ' + d.getDate() + '일 코디', o: JSON.parse(JSON.stringify(S.outfit)) }); S.looks = S.looks.slice(0, 60); store.set('looks', S.looks); toast('코디를 저장했어요'); },
+  clearLook: function () { var u = outfitUndo(); if (!u) return; S.outfit = {}; S.lastWear = null; store.set('outfit', S.outfit); S.keep = true; render(); toast('코디를 비웠어요', u); },
+  loadLook: function (el) { var l = S.looks[+el.dataset.v]; if (!l) return; var u = outfitUndo(); S.outfit = cleanOutfit(l.o); S.lastWear = null; store.set('outfit', S.outfit); S.tab = 'outfit'; store.set('tab', S.tab); render(); toast('코디를 불러왔어요', u && function () { u(); S.tab = 'saved'; render(); }); },
+  delLook: function (el) { var k = +el.dataset.v, l = S.looks.splice(k, 1)[0]; if (!l) return; store.set('looks', S.looks); S.keep = true; render(); toast('코디를 지웠어요', function () { S.looks.splice(Math.min(k, S.looks.length), 0, l); store.set('looks', S.looks); S.keep = true; render(); }); }
 };
 var GUARD = { wear: 1, setSlot: 1, setTone: 1, toSlot: 1, dailyWear: 1, dailyNext: 1, dailySave: 1, faceSave: 1, guideGo: 1, guideBack: 1 }, lastTap = 0;   // 300ms 안의 두 번째 탭은 무시 (두 번 눌러 엉뚱한 칸이 바뀌는 것 방지)
 document.addEventListener('click', function (e) { var el = e.target.closest('[data-act]'); if (!el || el.tagName === 'INPUT') return; var a = el.dataset.act, f = ACT[a]; if (!f) return; e.preventDefault(); if (el.closest('#sheet') && Date.now() - S.openedAt < 300) return; S.lastClick = Date.now(); if (GUARD[a]) { var now = Date.now(); if (now - lastTap < 300) return; lastTap = now; } f(el); });
